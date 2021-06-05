@@ -1,16 +1,49 @@
+import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-
+import { LoginComponent } from './login/login.component';
+import { ProjetsComponent } from './projets/projets.component';
+import { AddProjetComponent } from './add-projet/add-projet.component';
+import { UpdateProjetComponent } from './update-projet/update-projet.component';
+import { RegisterComponent } from './register/register.component';
+import { AdminComponent } from './admin/admin.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { PhysiqueComponent } from './physique/physique.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { MenuComponent } from './menu/menu.component';
+import { MarcheComponent } from './marche/marche.component';
+import { UserdetailComponent } from './userdetail/userdetail.component';
+//import { ChartsModule } from 'ng2-charts';
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LoginComponent,
+    ProjetsComponent,
+    AddProjetComponent,
+    UpdateProjetComponent,
+    RegisterComponent,
+    LoginComponent,
+    AdminComponent,
+    PhysiqueComponent,
+    DashboardComponent,
+    MenuComponent,
+    MarcheComponent,
+    UserdetailComponent,
+    //ChartsModule
+    
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule,
+    NgbModule,
+    //ChartsModule
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

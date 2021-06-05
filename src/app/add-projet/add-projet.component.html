@@ -1,0 +1,63 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    
+    <div class="collapse navbar-collapse" id="navbarColor02">
+       <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+             <a class="nav-link" href="/projets" >Liste Projets  <span class="sr-only">(current)</span></a>
+
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="/admin" >Liste Utilisateurs  <span class="sr-only">(current)</span></a>
+             </li>
+       </ul>
+       
+       
+     
+       <form class="form-inline my-2 my-lg-0">
+          <input type="search"  #key="ngModel" ngModel
+           name="key" id="searchName" class="form-control mr-sm-2"  placeholder="Search employees..." required>
+       </form>
+    </div>
+  </nav>
+  <br/>
+  <form class="user">
+  
+      <div class="col-sm-6 mb-3 mb-sm-0">
+          <input type="text" class="form-control form-control-user" [(ngModel)]="newProjet.id" name="matricule"id="exampleFirstName"
+              placeholder="Matricule"><br/>
+      </div>
+      
+      <div class="col-sm-6">
+          <input type="text" class="form-control form-control-user"[(ngModel)]="newProjet.ref" name="référence" id="exampleLastName"
+              placeholder="Référence "><br/>
+      </div>
+      <!--<div class="col-sm-6">
+          <input type="date" class="form-control form-control-user"[(ngModel)]="newProjet.date_debut" name="date début" id="exampleLastName"
+              placeholder="Date de début "><br/>
+              {{}}
+      </div>-->
+      <!--[(ngModel)]={{newProjet.myDate | date}}-->
+  <div class="col-sm-6">
+      <input type="date" class="form-control form-control-user"  [(ngModel)]="newProjet.date_fin" name="date fin"id="exampleInputEmail"
+          placeholder="Date fin"><br/>
+  </div>
+  
+  <div class="col-sm-6">
+          <input type="email" class="form-control form-control-user" [(ngModel)]="newProjet.budget" name="budget"
+              id="exampleInputPassword" placeholder="Budget"/>
+              </div>
+              
+      <div class="col-sm-6">
+       <br/>   <input type="string" class="form-control form-control-user" [(ngModel)]="newProjet.localisation" name="localisation"
+              id="exampleRepeatPassword" placeholder="Localisation"><br/>
+      </div>
+      <div class="col-sm-6">
+          <br/><input type="string" class="form-control form-control-user" [(ngModel)]="newProjet.structure" name="nom_structure"
+              id="exampleRepeatPassword" placeholder="Structure">
+      </div><br/>
+     
+      <div class="col-sm-6">
+      <a  (click)="addProjet()"class="btn btn-primary btn-user btn-block">
+        nouveau projet
+    </a>
+      </div>
