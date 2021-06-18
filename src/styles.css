@@ -13,7 +13,11 @@
  */
  @import 'https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css';
 @import 'https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css';
-
+@import'assets/login/css/main.css';
+@import'assets/login/css/util.css';
+@import'assets/login/fonts/font-awesome-4.7.0/css/font-awesome.css';
+@import 'assets/menu/css/custom.css';
+@import 'assets/menu/css/templatemo.css';
  :root {
     --blue: #4e73df;
     --indigo: #6610f2;

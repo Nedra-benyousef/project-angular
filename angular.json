@@ -10,7 +10,9 @@
       "projectType": "application",
       "schematics": {
         "@schematics/angular:application": {
+          "style":"css",
           "strict": true
+          
         }
       },
       "root": "",
@@ -37,6 +39,9 @@
             "scripts": [
               "node_modules/jquery/dist/jquery.js",
               "node_modules/bootstrap/dist/js/bootstrap.min.js"
+              
+              
+              
             ]
           },
           "configurations": {

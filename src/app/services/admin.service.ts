@@ -1,3 +1,4 @@
+import { role } from './../model/role.model';
 import { User } from './../model/user.model';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -12,6 +13,7 @@ const httpOptions={
 export class AdminService {
 
   users: User[];
+  host: string ='http://localhost:9090';
 apiURL: string ='http://localhost:9090/api';
 private baseURL='http://localhost:9090/api/delete/';
 private updateURL='http://localhost:9090/api/update/';
@@ -21,6 +23,9 @@ private updateURL='http://localhost:9090/api/update/';
   listeProjet():Observable<User[]>{
    return this.http.get<User[]>(this.apiURL +'/users'); 
   }
+  listeStructures():Observable<Structure[]>{
+    return this.http.get<User[]>(this.apiURL +'/users'); 
+   }
   listeStructure():Observable<User[]>{
     return this.http.get<User[]>(this.apiURL +'/users'); 
    }
@@ -43,8 +48,10 @@ return this.http.put(this.updateURL+id_user, user);
  return this.http.delete(this.baseURL+id_user);
 }
 getUserById(id:number):Observable<User>{
-  return this.http.get<User>(this.apiURL+'/users/'+id);
+  return this.http.get<User>(this.apiURL+'/users/'+id);}
 
+  getRoleById(id:number):Observable<role>{
+    return this.http.get<role>(this.apiURL+'/users/'+id);
 }
 
    /* consulterProjet(id:number): User{

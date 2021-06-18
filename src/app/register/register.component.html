@@ -1,134 +1,144 @@
+
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title>SB Admin 2 - Register</title>
-
-    <!-- Custom fonts for this template-->
-    <link href="/src/app/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    <link
-        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-        rel="stylesheet">
-
-    <!-- Custom styles for this template-->
-    <link href="/src/app/css/sb-admin-2.min.css" rel="stylesheet">
-
+	<title>Login V15</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->	
+	<link rel="icon" type="image/png" href="/assets/images"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/assets/login/vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/assets/login/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/assets/login/fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/assets/login/vendor/animate/animate.css">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="/assets/login/vendor/css-hamburgers/hamburgers.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/assets/login/vendor/animsition/css/animsition.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/assets/login/vendor/select2/select2.min.css">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="/assets/login/vendor/daterangepicker/daterangepicker.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/assets/login/css/util.css">
+	<link rel="stylesheet" type="text/css" href="/assets/login/css/main.css">
+<!--===============================================================================================-->
 </head>
+<body>
+	
+	<div class="limiter" >
+		<div class="container-login100">
+			<div class="wrap-login100">
+				<div class="login100-form-title" style="background-image: url(/assets/images/bg-01.jpg);">
+					<span class="login100-form-title-1">
+						Inscrivez-vous 
+					</span>
+				</div>
+				
+				<form class="login100-form validate-form"  >
+					<div class="wrap-input100 validate-input m-b-26" data-validate="matricule is required">
+						<span class="label-input100">Matricule</span>
+						<input class="input100" type="text" name="matricule" [(ngModel)]="newUser.matricule" placeholder="Entrer matricule">
+						<span class="focus-input100"></span>
+					</div>
+                    <div class="wrap-input100 validate-input m-b-26" data-validate="nom is required">
+						<span class="label-input100">Nom</span>
+						<input class="input100" type="text" name="nom" [(ngModel)]="newUser.nom" placeholder="Entrer nom">
+						<span class="focus-input100"></span>
+					</div>
+                    <div class="wrap-input100 validate-input m-b-26" data-validate="prenom is required">
+						<span class="label-input100">Prenom</span>
+						<input class="input100" type="text" name="prenom" [(ngModel)]="newUser.prenom" placeholder="Entrer prenom">
+						<span class="focus-input100"></span>
+					</div>
+                    <div class="wrap-input100 validate-input m-b-26" data-validate="datenaissance is required">
+						<span class="label-input100">Date de naissance</span>
+						<input class="input100" type="date" name="datenaissance" [(ngModel)]="newUser.datenaissance" placeholder="Enter username">
+						<span class="focus-input100"></span>
+					</div>
+                    <div class="wrap-input100 validate-input m-b-26" data-validate="email is required">
+						<span class="label-input100">Adresse mail</span>
+						<input class="input100" type="email" name="email" [(ngModel)]="newUser.email" placeholder="Entrer E-mail">
+						<span class="focus-input100"></span>
+					</div>
+                    <div class="wrap-input100 validate-input m-b-26" data-validate="telephone is required">
+						<span class="label-input100">Téléphone</span>
+						<input class="input100" type="text" name="telephone" [(ngModel)]="newUser.telephone" placeholder="Entrer  numéro téléphone">
+						<span class="focus-input100"></span>
+					</div>
+                    <div class="wrap-input100 validate-input m-b-26" data-validate="structure is required">
+						<span class="label-input100">Structure</span>
+						<input class="input100" type="text" name="structure" [(ngModel)]="newUser.nom_structure" placeholder="Entrer structure">
+						<span class="focus-input100"></span>
+					</div>
+                    <div class="wrap-input100 validate-input m-b-26" data-validate="mdp is required">
+						<span class="label-input100">Mot de passe</span>
+						<input class="input100" type="password" name="mdp" [(ngModel)]="newUser.mdp" placeholder="Entrer mot de passe">
+						<span class="focus-input100"></span>
+					</div>
+                    <div class="wrap-input100 validate-input m-b-26" data-validate="mdp is required">
+						<span class="label-input100">confirme mot de passe</span>
+						<input class="input100" type="password" name="mdp" [(ngModel)]="newUser.confirm_mdp" placeholder="Ré-entrer mot de passe">
+						<span class="focus-input100"></span>
+					</div>
 
-<body class="bg-gradient-primary">
+					
+                    <div class="wrap-input100 validate-input m-b-18" class="dropdown">
+                        <!--<input type="string" class="form-control form-control-user" [(ngModel)]="roles.role" name="confirm_mdp"
+                                       id="exampleRepeatPassword" placeholder="role">-->
+                                       <select  class="btn btn-secondary dropdown-toggle"name="pets" id="pet-select">
+                                           <option value="" *ngFor="let role of roles">Profile</option>
+                                           <option value="dog">Administrateur</option>
+                                           <option value="cat">Financier</option>
+                                           <option value="hamster">Responsable technique</option>
+                                           <option value="parrot">Responsable marché</option>
+                                           <option value="spider">Chef de projet</option>
+                                          
+                                       </select>
+                               </div>
+					<div class="flex-sb-m w-full p-b-30">
+						
 
-    <div class="container">
+						<div>
+							<a href="#" class="txt1">
+								Mot de passe oublié ?
+							</a>
+						</div>
+					</div>
 
-        <div class="card o-hidden border-0 shadow-lg my-5">
-            <div class="card-body p-0">
-                <!-- Nested Row within Card Body -->
-                <div class="row">
-                   <!-- <div class="col-lg-5 d-none d-lg-block bg-register-image"></div>-->
-                    <div class="col-lg-7">
-                        <div class="p-5">
-                            <div class="text-center">
-                                <h1 class="h4 text-gray-900 mb-4">Creez votre compte!</h1>
-                            </div>
-                            <form class="user">
-                                <div class="form-group row">
-                                    <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="text" class="form-control form-control-user" [(ngModel)]="newUser.matricule" name="matricule"id="exampleFirstName"
-                                            placeholder="Matricule"><br/>
-                                    </div>
-                                    
-                                    <div class="col-sm-6">
-                                        <input type="text" class="form-control form-control-user"[(ngModel)]="newUser.nom" name="nom" id="exampleLastName"
-                                            placeholder="Nom ">
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <input type="text" class="form-control form-control-user"[(ngModel)]="newUser.prenom" name="prenom" id="exampleLastName"
-                                            placeholder="Prenom ">
-                                    </div>
-                                
-                                <div class="col-sm-6">
-                                    <input type="date" class="form-control form-control-user"  [(ngModel)]="newUser.datenaissance" name="date_naissance"id="exampleInputEmail"
-                                        placeholder="Date de naissance"><br/>
-                                </div></div>
-                                <div class="form-group row">
-                                   
-                                        <input type="email" class="form-control form-control-user" [(ngModel)]="newUser.email" name="email"
-                                            id="exampleInputPassword" placeholder="Adresse e-mail"/>
-                                            
-                                    <div class="col-sm-6">
-                                     <br/>   <input type="string" class="form-control form-control-user" [(ngModel)]="newUser.telephone" name="telephone"
-                                            id="exampleRepeatPassword" placeholder="Numéro de téléphone"><br/>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <br/><input type="string" class="form-control form-control-user" [(ngModel)]="newUser.nom_structure" name="nom_structure"
-                                            id="exampleRepeatPassword" placeholder="Structure">
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <input type="password" class="form-control form-control-user" [(ngModel)]="newUser.mdp" name="mdp"
-                                            id="exampleRepeatPassword" placeholder="Mot de passe">
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <input type="password" class="form-control form-control-user" [(ngModel)]="newUser.confirm_mdp" name="confirm_mdp"
-                                            id="exampleRepeatPassword" placeholder="Confirmez mot de passe">
-                                    </div>
-                                
-                                    <div class="dropdown">
-                             <!--<input type="string" class="form-control form-control-user" [(ngModel)]="roles.role" name="confirm_mdp"
-                                            id="exampleRepeatPassword" placeholder="role">-->
-                                            <select  class="btn btn-secondary dropdown-toggle"name="pets" id="pet-select">
-                                                <option value="" *ngFor="let role of roles">Profile</option>
-                                                <option value="dog">Administrateur</option>
-                                                <option value="cat">Financier</option>
-                                                <option value="hamster">Responsable technique</option>
-                                                <option value="parrot">Responsable marché</option>
-                                                <option value="spider">Chef de projet</option>
-                                               
-                                            </select>
-                                    </div>
-                                </div>
-                                
-                                <a href="/admin" (click)="addUser()"class="btn btn-primary btn-user btn-block">
-                                    Créer un compte
-                                </a>
-                                <hr>
-                                <a href="index.html" class="btn btn-google btn-user btn-block">
-                                    <i class="fab fa-google fa-fw"></i> Se connecter avec Google
-                                </a>
-                                <a href="index.html" class="btn btn-facebook btn-user btn-block">
-                                    <i class="fab fa-facebook-f fa-fw"></i> Se connecter avec Facebook
-                                </a>
-                            </form>
-                            <hr>
-                            <div class="text-center">
-                                <a class="small" href="forgot-password.html">Mot de passe oublié?</a>
-                            </div>
-                            <div class="text-center">
-                                <a class="small" href="login.html">Vous avez déja un compte ? Connexion!</a>
-                            </div>
-                        </div>
+					<div class="container-login100-form-btn">
+						<button class="login100-form-btn" href="/admin" (click)="addUser()">
+							Inscription
+						</button>
+					</div>
+                    <div class="text-center">
+                        <a class="small" href="/login">Vous avez déja un compte ? Connexion!</a>
                     </div>
-                </div>
-            </div>
-        </div>
-
-    </div>
-
-    <!-- Bootstrap core JavaScript-->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-    <!-- Core plugin JavaScript-->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-
-    <!-- Custom scripts for all pages-->
-    <script src="js/sb-admin-2.min.js"></script>
+				</form>
+			</div>
+		</div>
+	</div>
+	
+<!--===============================================================================================-->
+	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/animsition/js/animsition.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/bootstrap/js/popper.js"></script>
+	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/daterangepicker/moment.min.js"></script>
+	<script src="vendor/daterangepicker/daterangepicker.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/countdowntime/countdowntime.js"></script>
+<!--===============================================================================================-->
+	<script src="js/main.js"></script>
 
 </body>
-
 </html>
