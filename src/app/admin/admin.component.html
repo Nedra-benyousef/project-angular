@@ -54,207 +54,53 @@
             <div id="content">
 
                 <!-- Topbar -->
-                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+           
+<nav id="main_nav" class="navbar navbar-expand-lg navbar-light bg-white shadow">
+    <div class="container d-flex justify-content-between align-items-center">
+        <a class="navbar-brand h1" href="index.html">
+            <i class='bx bx-buildings bx-sm text-dark'></i>
+            <span class="text-dark h4">CNI</span> <span class="text-primary h4">TUNISIE</span>
+        </a>
+        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-toggler-success" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-                    <!-- Sidebar Toggle (Topbar) -->
-                    <form class="form-inline">
-                        <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-                            <i class="fa fa-bars"></i>
-                        </button>
-                    </form>
-
+        <div class="align-self-center collapse navbar-collapse flex-fill  d-lg-flex justify-content-lg-between" id="navbar-toggler-success">
+            <div class="flex-fill mx-xl-3 mb-2">
+                <ul class="nav navbar-nav d-flex justify-content-between mx-xl-5 text-center text-dark">
+                    <li class="nav-item">
+                        <a class="nav-link btn-outline-primary rounded-pill px-3" href="/register">Création compte utilisateur</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn-outline-primary rounded-pill px-3" href="/admin">Liste utilisateurs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn-outline-primary rounded-pill px-3" href="/projets">Liste projets</a>
+                    </li>
+                    
+                    
+                    <li class="nav-item">
+                        <a class="nav-link btn-outline-primary rounded-pill px-3" (click)="deconnexion()">Déconnexion</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="navbar align-self-center d-flex">
+                <a class="nav-link" href="#"><i class='bx bx-bell bx-sm bx-tada-hover text-primary'></i></a>
+                <a class="nav-link" href="#"><i class='bx bx-cog bx-sm text-primary'></i></a>
+                {{loggedinUser.prenom}} {{loggedinUser.nom}}  <i class="fa fa-user" aria-hidden="true"></i>
+            </div>
+          
+            
+        </div>
+    </div>
+</nav>
                     <!-- Topbar Search -->
-                    <form
-                        class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-                        <div class="input-group">
-                            <input type="text" class="form-control bg-light border-0 small" (ngModelChange)="searchEmployees(key.value)" #key="ngModel" ngModel
-                            name="key"  placeholder="Rechercher..."
-                                aria-label="Recherche" aria-describedby="basic-addon2">
-                                <!--[(ngModel)]="nom" [(ngModelChange)]="Search()"-->
-                            <div class="input-group-append">
-                                <button class="btn btn-primary" type="button">
-                                    <i class="fa fa-search" ></i>
-                                </button>
-                            </div>
-                        </div>
-                    </form>
+                    
 
                     <!-- Topbar Navbar -->
-                    <ul class="navbar-nav ml-auto">
+                   
 
-                        <!-- Nav Item - Search Dropdown (Visible Only XS) -->
-                        <li class="nav-item dropdown no-arrow d-sm-none">
-                            <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-search fa-fw"></i>
-                            </a>
-                            <!-- Dropdown - Messages -->
-                            <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
-                                aria-labelledby="searchDropdown">
-                                <form class="form-inline mr-auto w-100 navbar-search">
-                                    <div class="input-group">
-                                        <input type="text" class="form-control bg-light border-0 small"
-                                            placeholder="Rechercher..." aria-label="Rechercher"
-                                            aria-describedby="basic-addon2">
-                                        <div class="input-group-append">
-                                            <button class="btn btn-primary" type="button">
-                                                <i class="fas fa-search fa-sm"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </li>
-
-                        <!-- Nav Item - Alerts -->
-                        <li class="nav-item dropdown no-arrow mx-1">
-                            <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fa fa-bullhorn" ></i>
-                                <!-- Counter - Alerts -->
-                                <span class="badge badge-danger badge-counter">3+</span>
-                            </a>
-                            <!-- Dropdown - Alerts -->
-                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                aria-labelledby="alertsDropdown">
-                                <h6 class="dropdown-header">
-                                    Nofification
-                                </h6>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="mr-3">
-                                        <div class="icon-circle bg-primary">
-                                            <i class="fas fa-file-alt text-white"></i>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div class="small text-gray-500">December 12, 2019</div>
-                                        <span class="font-weight-bold">A new monthly report is ready to download!</span>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="mr-3">
-                                        <div class="icon-circle bg-success">
-                                            <i class="fas fa-donate text-white"></i>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div class="small text-gray-500">December 7, 2019</div>
-                                        $290.29 has been deposited into your account!
-                                    </div>
-                                </a>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="mr-3">
-                                        <div class="icon-circle bg-warning">
-                                            <i class="fas fa-exclamation-triangle text-white"></i>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div class="small text-gray-500">December 2, 2019</div>
-                                        Spending Alert: We've noticed unusually high spending for your account.
-                                    </div>
-                                </a>
-                                <a class="dropdown-item text-center small text-gray-500" href="#">Afficher tous</a>
-                            </div>
-                        </li>
-
-
-
-                        <!-- Nav Item - Messages -->
-                        <li class="nav-item dropdown no-arrow mx-1">
-                            <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-envelope fa-fw"></i>
-                                <!-- Counter - Messages -->
-                                <span class="badge badge-danger badge-counter">7</span>
-                            </a>
-                            <!-- Dropdown - Messages -->
-                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                aria-labelledby="messagesDropdown">
-                                <h6 class="dropdown-header">
-                                    Messagerie
-                                </h6>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="img/undraw_profile_1.svg" alt="">
-                                        <div class="status-indicator bg-success"></div>
-                                    </div>
-                                    <div class="font-weight-bold">
-                                        <div class="text-truncate">Hi there! I am wondering if you can help me with a
-                                            problem I've been having.</div>
-                                        <div class="small text-gray-500">Emily Fowler · 58m</div>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="img/undraw_profile_2.svg" alt="">
-                                        <div class="status-indicator"></div>
-                                    </div>
-                                    <div>
-                                        <div class="text-truncate">I have the photos that you ordered last month, how
-                                            would you like them sent to you?</div>
-                                        <div class="small text-gray-500">Jae Chun · 1d</div>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="img/undraw_profile_3.svg" alt="">
-                                        <div class="status-indicator bg-warning"></div>
-                                    </div>
-                                    <div>
-                                        <div class="text-truncate">Last month's report looks great, I am very happy with
-                                            the progress so far, keep up the good work!</div>
-                                        <div class="small text-gray-500">Morgan Alvarez · 2d</div>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="https://source.unsplash.com/Mv9hjnEUHR4/60x60"
-                                            alt="">
-                                        <div class="status-indicator bg-success"></div>
-                                    </div>
-                                    <div>
-                                        <div class="text-truncate">Am I a good boy? The reason I ask is because someone
-                                            told me that people say this to all dogs, even if they aren't good...</div>
-                                        <div class="small text-gray-500">Chicken the Dog · 2w</div>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item text-center small text-gray-500" href="#">Lire d'autres
-                                    messages</a>
-                            </div>
-                        </li>
-
-                        <div class="topbar-divider d-none d-sm-block"></div>
-
-                        <!-- Nav Item - User Information -->
-                        <li class="nav-item dropdown no-arrow">
-                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Nedra benyoussef</span>
-                                <img class="img-profile rounded-circle" src="img/undraw_profile.svg">
-                            </a>
-                            <!-- Dropdown - User Information -->
-                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Profil
-                                </a>
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Paramétre
-                                </a>
-
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
-                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Déconnexion
-                                </a>
-                            </div>
-                        </li>
-
-                    </ul>
-
-                </nav>
+                  
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
@@ -268,17 +114,29 @@
                     -->
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
-                        <div class="card-header py-3"><a href="/projets">
-                            liste de projets
-                        </a>
+                        <div class="card-header py-3">
                             <h6 class="m-0 font-weight-bold text-primary">Liste des utilisateurs </h6>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
+                                <form
+                                class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                                <div class="input-group">
+                                    <input type="text" class="form-control bg-light border-0 small" (ngModelChange)="searchEmployees(key.value)" #key="ngModel" ngModel
+                                    name="key"  placeholder="Rechercher..."
+                                        aria-label="Recherche" aria-describedby="basic-addon2">
+                                        <!--[(ngModel)]="nom" [(ngModelChange)]="Search()"-->
+                                    <div class="input-group-append">
+                                        <button class="btn btn-primary" type="button">
+                                            <i class="fa fa-search" ></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                           <th>id</th>
+                                          <th>id</th>
                                             <th>Matricule</th>
                                             <th>Nom </th>
                                             <th>Prénom</th>
@@ -286,89 +144,19 @@
                                             <th>Email</th>
                                             <th>Téléphone</th>
                                             <th>Structure</th>
-                                            <th>Role</th>
+                                            <th>Profiles</th>
+                                            <th>Projets</th>
                                             <th>Actions</th>
                                             
-                                            <div class="text-secondary">
-                                                <div class="btn-group">
-                                                    <a href="/register"type="button" class="nc-plus-universal-menu-container"
-                                                        data-toggle="dropdown" aria-expanded="false"><img
-                                                            src="assets/images/+.png" /></a>
-                                                    <ul class="dropdown-menu">
-                                                        <li><a class="dropdown-item" data-toggle="modal"
-                                                                data-target="#exampleModal" href="#">Ajouter</a></li>
-                                                        <li><a class="dropdown-item" href="#">Modifier</a></li>
-                                                        <li><a class="dropdown-item" href="#">Supprimer</a></li>
-
-                                                    </ul>
-                                                    <div class="modal fade" id="exampleModal" tabindex="-1"
-                                                        role="dialog" aria-labelledby="exampleModalLabel"
-                                                        aria-hidden="true">
-                                                        <div class="modal-dialog" role="document">
-                                                            <div class="modal-content">
-                                                                <div class="modal-header">
-                                                                    <h5 class="modal-title" id="exampleModalLabel">
-                                                                        Nouveau utilisateur</h5>
-                                                                    <button type="button" class="close"
-                                                                        data-dismiss="modal" aria-label="Close">
-                                                                        <span aria-hidden="true">&times;</span>
-                                                                    </button>
-                                                                </div>
-                                                                <div class="modal-body">
-                                                                    <form>
-                                                                        <div class="form-group">
-                                                                            <label for="recipient-name"
-                                                                                class="col-form-label">Structure:</label>
-                                                                            <input type="text" class="form-control"
-                                                                                id="recipient-name">
-                                                                        </div>
-                                                                        <div class="form-group">
-                                                                            <label for="recipient-name"
-                                                                                class="col-form-label">Nom
-                                                                                d'utilisateur:</label>
-                                                                            <input type="text" class="form-control"
-                                                                                id="recipient-name">
-                                                                        </div>
-                                                                        <div class="form-group">
-                                                                            <label for="recipient-name"
-                                                                                class="col-form-label">Mot de
-                                                                                passe:</label>
-                                                                            <input type="Password" class="form-control"
-                                                                                id="recipient-name">
-                                                                        </div>
-                                                                        <div class="form-group">
-                                                                            <label for="recipient-name"
-                                                                                class="col-form-label">Role:</label>
-                                                                            <input type="text" class="form-control"
-                                                                                id="recipient-name">
-                                                                        </div>
-                                                                        <div class="form-group">
-                                                                            <label for="recipient-name"
-                                                                                class="col-form-label">Administrateur:</label>
-                                                                            <input type="Date" class="form-control"
-                                                                                id="recipient-name">
-                                                                        </div>
-
-
-                                                                      
-                                                                    </form>
-                                                                </div>
-                                                                <div class="modal-footer">
-                                                                    <button type="button" class="btn btn-secondary"
-                                                                        data-dismiss="modal">Fermer</button>
-                                                                    <button type="button"
-                                                                        class="btn btn-primary">Sauvegarder</button>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                            
+                                                   
+                                                
 
                                         </tr>
                                     </thead>
                                     
-                                    <tbody *ngFor="let user of users">
+                                    <tbody *ngFor="let user of users  " >
+                                        <!--{{user | json}}-->
                                         <tr>
                                             <td>{{user.id_user}}</td>
                                             <td>{{user.matricule}}</td>
@@ -378,20 +166,50 @@
                                             <td>{{user.datenaissance}}</td>
                                             <td>{{user.email}}</td>
                                             <td>{{user.telephone}}</td>
-                                            <td>{{user.nom_structure}}</td>
-                                            <td>{{user.roles}}</td>
+                                            
+                                            <td>{{user.structure?.name_structure }}
+                                            </td>
+                                            <td>
+                                                
+                                                <div *ngFor="let profile of user.profiles">
+                                                    {{profile.role!.name!}}<br>
+                                                </div>
+                                                
+                                            </td>
+                                            <td>
+                                                <div *ngFor="let profile of user.profiles">
+                                                    {{profile.projet!.ref!}}<br>
+                                                </div>
+                                                
+                                            </td>
+                                             <!-- <td>  
+                                                <div class="wrap-input100 validate-input m-b-18" class="dropdown">
+                        
+                                                    <select [(ngModel)]="profile.profileId" multiple class="btn btn-secondary dropdown-toggle"name="pets" id="pet-select">
+                                                          <option *ngFor="let profile of profiles" [value]="profiles">{{profile.projet.ref}}</option>
+                                                          
+                                                         
+                                                      </select>
+                                              </div> </td>-->
                                       <td> <button type="button" (click)="updateUser(user.id_user||0)"  class="btn btn-outline-success my-2 my-sm-0"> 
-                                        Edit</button>
+                                        Modifier</button>
+                                                  
 
                                          <button type="button"  class="btn btn-outline-danger" (click)="supprimerUser(user.id_user||0)"> 
                                             Supprimer</button>
                                             <button type="button"  class="btn btn-outline-info" (click)="userDetail(user.id_user||0)"> 
-                                                View</button></td></tr>
+                                                View</button></td>
+                                               
+                                                  
+                                                  <hr>
+                                                  
+                                                 
+                                            </tr>
                                         
                                 </tbody>
                                 </table>
 
-                                <div class="col-sm-12 col-md-8 col-lg-12"><br />
+                                <!--<div class="col-sm-12 col-md-8 col-lg-12"><br />
                                     <form action="" method="POST">
                                         <fieldset>
                                             <h3>Fiche utilisateur </h3>
@@ -425,9 +243,9 @@
 
                                                 
 
+                                        -->
 
-
-
+                                      
 
                                             <!-- /.container-fluid -->
 

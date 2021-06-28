@@ -1,3 +1,4 @@
+import { MarcheComponent } from './marche/marche.component';
 import { UserdetailComponent } from './userdetail/userdetail.component';
 import { MenuComponent } from './menu/menu.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -10,7 +11,7 @@ import { LoginComponent } from './login/login.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-import { UpdateProjetComponent } from './update-projet/update-projet.component';
+import { UpdateUserComponent } from './update-user/update-user.component';
 
 const routes: Routes = [
   {path:'login',component: LoginComponent},
@@ -18,11 +19,14 @@ const routes: Routes = [
   {path:'addprojet',component: AddProjetComponent},
   {path:'register',component: RegisterComponent},
   {path:'admin',component: AdminComponent},
-  {path:'update/:id_user',component: UpdateProjetComponent},
+  {path:'update/:id_user',component: UpdateUserComponent},
+  
+
   {path:'physique',component: PhysiqueComponent},
-  {path:'dashboard',component: DashboardComponent},
+  {path:'dashboard/:id',component: DashboardComponent},
   {path:'menu',component: MenuComponent},
   {path:'detail/:id',component: UserdetailComponent},
+  {path:'marche',component: MarcheComponent},
   {path:"", redirectTo:"menu", pathMatch:"full"}
 
 ];

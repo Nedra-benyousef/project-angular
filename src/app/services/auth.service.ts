@@ -1,5 +1,5 @@
 import { Router } from '@angular/router';
-import { role } from './../model/role.model';
+import { Role } from './../model/role.model';
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { User } from '../model/user.model';
@@ -18,7 +18,7 @@ export class AuthService {
   //public roles: string[];
   users: User[];
   apiURL: string ='http://localhost:9090/api/users';
-   roles:role[];
+   roles:Role[];
   //public loggedUser:string;
     constructor(private http : HttpClient, private router:Router ) {
       this.users=[];
@@ -34,7 +34,6 @@ export class AuthService {
      signIn(user:User){
       this.loggedUser = String(user.matricule);
      this.isloggedIn = true;
-     this.roles=Object(user.roles);
      localStorage.setItem('loggedUser', this.loggedUser);
      localStorage.setItem('isloggedIn', String(this.isloggedIn));
 
@@ -74,19 +73,19 @@ export class AuthService {
     });
     return validUser;
   }*/
-  isAdmin():Boolean{
+ /* isAdmin():Boolean{
     let admin:Boolean=false;
     if(!this.roles)
     return false;
    
     this.roles.forEach((curRole)=>{
-      if(curRole.role=='administrateur'){
+      if(curRole.name=='administrateur'){
       admin=true;
     }
     });
     return admin;
 
-}
+}*/
 logout(){
   /*this.isloggedIn=false;
   this.loggedUser=undefined;

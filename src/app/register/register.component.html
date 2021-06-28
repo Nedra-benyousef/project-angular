@@ -1,107 +1,195 @@
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<title>Login V15</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-<!--===============================================================================================-->	
-	<link rel="icon" type="image/png" href="/assets/images"/>
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
+	<link rel="icon" type="image/png" href="/assets/images" />
+	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="/assets/login/vendor/bootstrap/css/bootstrap.min.css">
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="/assets/login/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="/assets/login/fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="/assets/login/vendor/animate/animate.css">
-<!--===============================================================================================-->	
+	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="/assets/login/vendor/css-hamburgers/hamburgers.min.css">
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="/assets/login/vendor/animsition/css/animsition.min.css">
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="/assets/login/vendor/select2/select2.min.css">
-<!--===============================================================================================-->	
+	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="/assets/login/vendor/daterangepicker/daterangepicker.css">
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="/assets/login/css/util.css">
 	<link rel="stylesheet" type="text/css" href="/assets/login/css/main.css">
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 </head>
+
 <body>
-	
-	<div class="limiter" >
+
+	<div class="limiter">
+		<nav id="main_nav" class="navbar navbar-expand-lg navbar-light bg-white shadow">
+			<div class="container d-flex justify-content-between align-items-center">
+				<a class="navbar-brand h1" href="index.html">
+					<i class='bx bx-buildings bx-sm text-dark'></i>
+					<span class="text-dark h4">CNI</span> <span class="text-primary h4">TUNISIE</span>
+				</a>
+				<button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-toggler-success" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+		
+				<div class="align-self-center collapse navbar-collapse flex-fill  d-lg-flex justify-content-lg-between" id="navbar-toggler-success">
+					<div class="flex-fill mx-xl-3 mb-2">
+						<ul class="nav navbar-nav d-flex justify-content-between mx-xl-5 text-center text-dark">
+							<li class="nav-item">
+								<a class="nav-link btn-outline-primary rounded-pill px-3" href="/register">Création compte utilisateur</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link btn-outline-primary rounded-pill px-3" href="/admin">Liste utilisateurs</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link btn-outline-primary rounded-pill px-3" href="/projets">Liste projets</a>
+							</li>
+							
+							
+							<li class="nav-item">
+								<a class="nav-link btn-outline-primary rounded-pill px-3"(click)="deconnexion()">Déconnexion</a>
+							</li>
+						</ul>
+					</div>
+					<div class="navbar align-self-center d-flex">
+						<a class="nav-link" href="#"><i class='bx bx-bell bx-sm bx-tada-hover text-primary'></i></a>
+						<a class="nav-link" href="#"><i class='bx bx-cog bx-sm text-primary'></i></a>
+						<a>{{loggedinUser.prenom}} {{loggedinUser.nom}}  <i class="fa fa-user" aria-hidden="true"></i></a>
+					</div>
+					
+					
+				</div>
+			</div>
+		</nav>
 		<div class="container-login100">
 			<div class="wrap-login100">
 				<div class="login100-form-title" style="background-image: url(/assets/images/bg-01.jpg);">
 					<span class="login100-form-title-1">
-						Inscrivez-vous 
+						Création compte
 					</span>
 				</div>
-				
-				<form class="login100-form validate-form"  >
+
+				<form class="login100-form validate-form">
 					<div class="wrap-input100 validate-input m-b-26" data-validate="matricule is required">
 						<span class="label-input100">Matricule</span>
-						<input class="input100" type="text" name="matricule" [(ngModel)]="newUser.matricule" placeholder="Entrer matricule">
+						<input class="input100" type="text" class="form-control" name="matricule"
+							[(ngModel)]="newUser.matricule" placeholder="Entrer matricule" required maxlength="3" required minlength="3"
+							#matVar="ngModel"
+							[ngClass]="{'is-invalid': matVar.touched && !matVar.valid}">
+							<div class="invalid-feedback">
+								<span *ngIf="matVar.errors?.required">Entrez matricule</span>
+								<span *ngIf="matVar.errors?.minlength"> Entrez 3 caractéres </span>
+							</div>
+	
 						<span class="focus-input100"></span>
 					</div>
-                    <div class="wrap-input100 validate-input m-b-26" data-validate="nom is required">
+					<div class="wrap-input100 validate-input m-b-26">
 						<span class="label-input100">Nom</span>
-						<input class="input100" type="text" name="nom" [(ngModel)]="newUser.nom" placeholder="Entrer nom">
-						<span class="focus-input100"></span>
-					</div>
-                    <div class="wrap-input100 validate-input m-b-26" data-validate="prenom is required">
-						<span class="label-input100">Prenom</span>
-						<input class="input100" type="text" name="prenom" [(ngModel)]="newUser.prenom" placeholder="Entrer prenom">
-						<span class="focus-input100"></span>
-					</div>
-                    <div class="wrap-input100 validate-input m-b-26" data-validate="datenaissance is required">
-						<span class="label-input100">Date de naissance</span>
-						<input class="input100" type="date" name="datenaissance" [(ngModel)]="newUser.datenaissance" placeholder="Enter username">
-						<span class="focus-input100"></span>
-					</div>
-                    <div class="wrap-input100 validate-input m-b-26" data-validate="email is required">
-						<span class="label-input100">Adresse mail</span>
-						<input class="input100" type="email" name="email" [(ngModel)]="newUser.email" placeholder="Entrer E-mail">
-						<span class="focus-input100"></span>
-					</div>
-                    <div class="wrap-input100 validate-input m-b-26" data-validate="telephone is required">
-						<span class="label-input100">Téléphone</span>
-						<input class="input100" type="text" name="telephone" [(ngModel)]="newUser.telephone" placeholder="Entrer  numéro téléphone">
-						<span class="focus-input100"></span>
-					</div>
-                    <div class="wrap-input100 validate-input m-b-26" data-validate="structure is required">
-						<span class="label-input100">Structure</span>
-						<input class="input100" type="text" name="structure" [(ngModel)]="newUser.nom_structure" placeholder="Entrer structure">
-						<span class="focus-input100"></span>
-					</div>
-                    <div class="wrap-input100 validate-input m-b-26" data-validate="mdp is required">
-						<span class="label-input100">Mot de passe</span>
-						<input class="input100" type="password" name="mdp" [(ngModel)]="newUser.mdp" placeholder="Entrer mot de passe">
-						<span class="focus-input100"></span>
-					</div>
-                    <div class="wrap-input100 validate-input m-b-26" data-validate="mdp is required">
-						<span class="label-input100">confirme mot de passe</span>
-						<input class="input100" type="password" name="mdp" [(ngModel)]="newUser.confirm_mdp" placeholder="Ré-entrer mot de passe">
+						<input class="input100" type="text" class="form-control" name="nom" [(ngModel)]="newUser.nom"
+							placeholder="Entrer nom" required minlength="4" #nomVar="ngModel"
+							[ngClass]="{'is-invalid': nomVar.touched && !nomVar.valid}">
+						<div class="invalid-feedback">
+							<span *ngIf="nomVar.errors?.required">Entrez nom</span>
+							<span *ngIf="nomVar.errors?.minlength">Minimum 4 caractéres </span>
+						</div>
+
 						<span class="focus-input100"></span>
 					</div>
 
-					
-                    <div class="wrap-input100 validate-input m-b-18" class="dropdown">
-                        <!--<input type="string" class="form-control form-control-user" [(ngModel)]="roles.role" name="confirm_mdp"
-                                       id="exampleRepeatPassword" placeholder="role">-->
-                                       <select  class="btn btn-secondary dropdown-toggle"name="pets" id="pet-select">
-                                           <option value="" *ngFor="let role of roles">Profile</option>
-                                           <option value="dog">Administrateur</option>
-                                           <option value="cat">Financier</option>
-                                           <option value="hamster">Responsable technique</option>
-                                           <option value="parrot">Responsable marché</option>
-                                           <option value="spider">Chef de projet</option>
-                                          
-                                       </select>
-                               </div>
+					<div class="wrap-input100 validate-input m-b-26">
+						<span class="label-input100">Prenom</span>
+						<input class="input100" type="text" class="form-control" name="prenom"
+							[(ngModel)]="newUser.prenom" placeholder="Entrer Prenom" required minlength="4"
+							#prenomVar="ngModel" [ngClass]="{'is-invalid': prenomVar.touched && !prenomVar.valid}">
+						<div class="invalid-feedback">
+							<span *ngIf="prenomVar.errors?.required">Entrez prenom</span>
+							<span *ngIf="prenomVar.errors?.minlength">Minimum 4 caractéres </span>
+						</div>
+
+						<span class="focus-input100"></span>
+					</div>
+
+					<div class="wrap-input100 validate-input m-b-26" data-validate="datenaissance is required">
+						<span class="label-input100">Date de naissance</span>
+						<input class="input100" type="date" name="datenaissance" required [(ngModel)]="newUser.datenaissance"
+							placeholder="Enter username" #dateVar="ngModel"
+							[ngClass]="{'is-invalid': dateVar.touched && !dateVar.valid}">
+							<div class="invalid-feedback">
+								<span *ngIf="dateVar.errors?.required">Entrez date de naissance</span>
+								
+							</div>
+	
+						<span class="focus-input100"></span>
+					</div>
+
+					<div class="wrap-input100 validate-input m-b-26" data-validate="telephone is required">
+						<span class="label-input100">Téléphone</span>
+						<input class="input100" type="text" name="telephone" [(ngModel)]="newUser.telephone"
+							placeholder="Entrer  numéro téléphone"  required maxlength="8" required minlength="8"
+							#telephoneVar="ngModel" [ngClass]="{'is-invalid': telephoneVar.touched && !telephoneVar.valid}">
+							<div class="invalid-feedback">
+								<span *ngIf="telephoneVar.errors?.required">Entrez numéro téléphone</span>
+								<span *ngIf="telephoneVar.errors?.minlength">Entrez 8 chiffre </span>
+							</div>
+						<span class="focus-input100"></span>
+					</div>
+					<!-- <div class="wrap-input100 validate-input m-b-26" data-validate="structure is required">
+						<span class="label-input100">Structure</span>
+						<input class="input100" type="text" name="structure" [(ngModel)]="newUser.nom_structure" placeholder="Entrer structure">
+						<span class="focus-input100"></span>
+					</div>-->
+					<div class="validate-input m-b-26" data-validate="telephone is required">
+						<span class="label-input100">Structure</span>
+						<div class="wrap-input100 validate-input m-b-26" class="dropdown">
+
+							<select [(ngModel)]="newUser.structure"  class="btn btn-secondary dropdown-toggle"
+								name="pets" id="pet-select">
+								<option *ngFor="let Structure of Structures" [ngValue]="Structure">
+									{{Structure.name_structure}}</option>
+
+
+							</select>
+						</div>
+					</div>
+
+					<div class="wrap-input100 validate-input m-b-26">
+						<span class="label-input100">Adresse mail</span>
+						<input class="input100" type="email" name="email" [(ngModel)]="newUser.email"
+							#emailVar="ngModel" class=" form-control" placeholder="Entrer E-mail"
+							[ngClass]="{'is-invalid':emailVar.touched && !emailVar.valid}" required email>
+
+						<div class="invalid-feedback">
+							<span *ngIf="emailVar.errors?.required">Entrez E-mail</span>
+							<span *ngIf="emailVar.errors?.email">E-mail n'est valide </span>
+						</div>
+						<span class="focus-input100"></span>
+					</div>
+
+					<div class="wrap-input100 validate-input m-b-26" data-validate="mdp is required">
+						<span class="label-input100">Mot de passe</span>
+						<input class="input100" type="password" name="mdp" [(ngModel)]="newUser.mdp"
+							placeholder="entrer mot de passe"#mdpVar="ngModel" class=" form-control" placeholder="Entrer mot de passe"
+							[ngClass]="{'is-invalid':mdpVar.touched && !mdpVar.valid}" required >
+							<div class="invalid-feedback">
+								<span *ngIf="mdpVar.errors?.required">Entrez mot de passe</span>
+								<span *ngIf="mdpVar.errors?.password">mot de passe n'est valide </span>
+							</div>
+						<span class="focus-input100"></span>
+					</div>
+
+
 					<div class="flex-sb-m w-full p-b-30">
-						
+
 
 						<div>
 							<a href="#" class="txt1">
@@ -115,30 +203,31 @@
 							Inscription
 						</button>
 					</div>
-                    <div class="text-center">
-                        <a class="small" href="/login">Vous avez déja un compte ? Connexion!</a>
-                    </div>
+					<div class="text-center">
+						<a class="small" href="/login">Vous avez déja un compte ? Connexion!</a>
+					</div>
 				</form>
 			</div>
 		</div>
 	</div>
-	
-<!--===============================================================================================-->
+
+	<!--===============================================================================================-->
 	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<script src="vendor/animsition/js/animsition.min.js"></script>
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<script src="vendor/bootstrap/js/popper.js"></script>
 	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<script src="vendor/select2/select2.min.js"></script>
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<script src="vendor/daterangepicker/moment.min.js"></script>
 	<script src="vendor/daterangepicker/daterangepicker.js"></script>
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<script src="vendor/countdowntime/countdowntime.js"></script>
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<script src="js/main.js"></script>
 
 </body>
+
 </html>

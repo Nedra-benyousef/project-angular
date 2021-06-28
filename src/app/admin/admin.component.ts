@@ -1,8 +1,18 @@
-import { role } from './../model/role.model';
+import { Profile } from './../model/profile.model';
+import { RoleService } from './../services/role.service';
+import { ProjetService } from './../services/projet.service';
+import { Projet } from './../model/projet.model';
+import { StructureService } from './../services/structure.service';
+import { Structure } from './../model/structure.model';
+import { Role } from './../model/role.model';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AdminService } from './../services/admin.service';
 import { User } from './../model/user.model';
-import { Component, OnInit } from '@angular/core';
+import {  OnInit } from '@angular/core';
+import {Component} from '@angular/core';
+
+import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+import { ProfileService } from '../services/profile.service';
 
 @Component({
   selector: 'app-admin',
@@ -12,28 +22,73 @@ import { Component, OnInit } from '@angular/core';
 export class AdminComponent implements OnInit {
 currentUser= null ;
   users : User[];
+  projets: Projet[]=[];
+  Structure: Structure[]=[];
+  roles: Role[]=[];
+  profiles: Profile[]=[];
   nom: any;
-  roles : role[];
-  constructor(private adminService :AdminService,private router:Router,private activateRoute : ActivatedRoute ) { 
+  newUser = new User();
+  profile = new Profile();
+  loggedinUser= new User();
+  
+ // structures:Structure[];
+  constructor(private roleService :RoleService ,  private profileService : ProfileService, private StructureService: StructureService , private adminService :AdminService,private router:Router,private activateRoute : ActivatedRoute ) { 
     this.users= [];
-    this.roles=[];
+
+   // this.structures=[];
     //this.projets=[{idproduit:1,nomproduit:"PCAsus",
   //prixproduit:3000.600,datecreation:new Date("01/14/2011")}];
 }
 
   ngOnInit(): void {
+    const userString=localStorage.getItem("user");
+    if(userString){
+      this.loggedinUser= JSON.parse(userString)
+    
+  }
+  else{
+    this.router.navigate(["/login"]);
+  }
+    this.profileService.listeProfile().subscribe(
+      (data) => {
+        this.profiles=data
+      }
+    )
+    this.roleService.listeRole().subscribe(
+      (data) => this.roles = data
+    )
     this.getUser();
+    this.getRole();
+    this.StructureService.listeStructure().subscribe(
+      (data) => {
+        this.projets=data
+      }
+    )
+    this.StructureService.listeStructure().subscribe(
+      (data) => this.Structure = data
+    )
+    
   }
 private getUser(){
-  this.adminService.listeProjet().subscribe((prods =>
+  this.adminService.listeUser().subscribe((prods =>
     { //console.log('Item:'+JSON.stringify(this.roles));
       this.users = prods;
 
     }));
 }
+deconnexion(){
+  localStorage.removeItem("user");
+  this.router.navigate(["/login"]);
+}
+private getRole(){
+  this.adminService.listeStructure().subscribe((prods =>
+    { //console.log('Item:'+JSON.stringify(this.roles));
+      //this.structers = prods;
 
+    }));
+}
 supprimerUser(id_user:number){
-  let conf = confirm("Etes-vous sur ?");
+  let conf = confirm("Etes-vous sur de confirmer la suppresion de projet ?");
 if(conf)
   this.adminService.delete(id_user).subscribe(data =>
     {
@@ -45,6 +100,7 @@ userDetail(id_user:number){
   this.router.navigate(['detail',id_user]);
 
 }
+
 
 /*this.router.navigate(['']).then(() =>{
   window.location.reload();

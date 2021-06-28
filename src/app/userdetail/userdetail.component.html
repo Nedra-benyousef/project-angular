@@ -1,51 +1,84 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    
-    <div class="collapse navbar-collapse" id="navbarColor02">
-       <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-             <a class="nav-link" href="/admin" >Liste utilisateur  <span class="sr-only">(current)</span></a>
-          </li>
-       </ul>
-       <form class="form-inline my-2 my-lg-0">
-          <input type="search"  #key="ngModel" ngModel
-           name="key" id="searchName" class="form-control mr-sm-2"  placeholder="Search employees..." required>
-       </form>
-    </div>
-  </nav>
+<nav id="main_nav" class="navbar navbar-expand-lg navbar-light bg-white shadow">
+   <div class="container d-flex justify-content-between align-items-center">
+      
+       <a class="navbar-brand h1" >
+           <i class='bx bx-buildings bx-sm text-dark'></i>
+           
+           <span class="text-dark h4">CNI </span> <span class="text-primary h4">TUNISIE</span>
+       </a>
+       <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse"
+           data-bs-target="#navbar-toggler-success" aria-controls="navbarSupportedContent"
+           aria-expanded="false" aria-label="Toggle navigation">
+           <span class="navbar-toggler-icon"></span>
+       </button>
+
+       <div class="align-self-center collapse navbar-collapse flex-fill  d-lg-flex justify-content-lg-between"
+           id="navbar-toggler-success">
+           <div class="flex-fill mx-xl-3 mb-2">
+               <ul class="nav navbar-nav d-flex justify-content-between mx-xl-5 text-center text-dark">
+                   <li class="nav-item">
+                      
+                   <li class="nav-item">
+                       <a class="nav-link btn-outline-primary rounded-pill px-3" href="/admin">Liste
+                        utilisateurs</a>
+                   </li>
+                   <li class="nav-item">
+                       <a class="nav-link btn-outline-primary rounded-pill px-3" (click)="deconnexion()">
+                           Déconnexion</a>
+                   </li>
+
+
+
+                   
+               </ul>
+           </div>
+           {{loggedinUser.prenom}} {{loggedinUser.nom}}<div class="navbar align-self-center d-flex">
+            <i class="fa fa-user" aria-hidden="true"></i>
+           </div>
+
+
+       </div>
+   </div>
+</nav>
 <h3> Information personnel</h3>
 
 <div class="container" id="main-container">
-    <div class="row">
-        <div class="col-md-6 col-xl-3">
-        <div class="card m-b-30">
+   <div class="row">
+      <div class="col-md-6 col-xl-3">
+         <div class="card m-b-30">
             <div class="card-body row">
-              
-                  <div class="col-3">
-                            <a href=""><img src="" alt="" class="img-fluid rounded-circle w-60"></a>
-                         </div> 
-                         <div class="col-6 card-title align-self-center mb-0">
-                            <h5>{{user.nom}} {{user.prenom}}</h5>
-              <p class="m-0">{{user.matricule}}</p>
-           </div>
-           </div>
-                            <ul class="list-group list-group-flush">     
-                              
-      <li class="list-group-item"> {{user.id_user}}</li> 
-  
 
-            <li class="list-group-item"><i class="fa fa-calendar float-right"></i>{{user.datenaissance}}</li>
-                <li class="list-group-item"><i class="fa fa-envelope float-right"></i>{{user.email}}</li>
-                    <li class="list-group-item"><i class="fa fa-phone float-right"></i>{{user.telephone}}</li>
-                        <li class="list-group-item">{{user.nom_structure}}</li>
-                            <li class="list-group-item">{{user.roles}}</li>
-</ul>
-<div class="card-body">
-    <div class="float-right btn-group btn-group-sm">
-       <a  class="btn btn-primary tooltips" data-placement="top" data-original-title="Edit"><i class="fa fa-pencil"></i> </a>
-       <a  class="btn btn-secondary tooltips" data-placement="top" data-original-title="Delete" (click)="supprimerUser(user.id_user||0)" href="/admin"><i class="fa fa-times"></i></a>
-    </div>
- </div>
-</div>
-</div>
-</div>
+               <div class="col-3">
+                  <a href=""><img src="" alt="" class="img-fluid rounded-circle w-60"></a>
+               </div>
+               <div class="col-6 card-title align-self-center mb-0">
+                  <h5><strong>{{user.nom}} {{user.prenom}}</strong></h5>
+                <strong>Matricule :</strong>{{user.matricule}}
+               </div>
+            </div>
+            <ul class="list-group list-group-flush">
+
+               
+
+
+               <li class="list-group-item"><i class="fa fa-calendar float-right"></i>{{user.datenaissance}}</li>
+               <li class="list-group-item"><i class="fa fa-envelope float-right"></i>{{user.email}}</li>
+               <li class="list-group-item"><i class="fa fa-phone float-right"></i>{{user.telephone}}</li>
+               <li class="list-group-item">{{user.structure?.name_structure}}</li>
+               <li class="list-group-item" *ngFor="let profile of profiles"><div>
+                 <strong>Référence de projet :</strong> {{profile.projet!.ref!}} <br/>
+                 <strong>Role :</strong> {{profile.role!.name!}}
+               </div></li>
+            </ul>
+            <div class="card-body">
+               <div class="float-right btn-group btn-group-sm">
+                  <a class="btn btn-primary tooltips" data-placement="top" data-original-title="Edit" href="/admin"><i class="fa fa-angle-left" aria-hidden="true"></i> </a>
+                  <a class="btn btn-secondary tooltips" data-placement="top" data-original-title="Delete"
+                     (click)="supprimerUser(user.id_user||0)" href="/admin"><i class="fa fa-times"></i></a>
+               </div>
+            </div>
+         </div>
+      </div>
+      
+   </div>
 </div>

@@ -8,7 +8,7 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { ProjetsComponent } from './projets/projets.component';
 import { AddProjetComponent } from './add-projet/add-projet.component';
-import { UpdateProjetComponent } from './update-projet/update-projet.component';
+import { UpdateUserComponent } from './update-user/update-user.component';
 import { RegisterComponent } from './register/register.component';
 import { AdminComponent } from './admin/admin.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -24,7 +24,7 @@ import { UserdetailComponent } from './userdetail/userdetail.component';
     LoginComponent,
     ProjetsComponent,
     AddProjetComponent,
-    UpdateProjetComponent,
+    UpdateUserComponent,
     RegisterComponent,
     LoginComponent,
     AdminComponent,
@@ -33,6 +33,7 @@ import { UserdetailComponent } from './userdetail/userdetail.component';
     MenuComponent,
     MarcheComponent,
     UserdetailComponent,
+    
     //ChartsModule
     
   ],

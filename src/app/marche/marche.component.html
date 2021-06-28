@@ -1,1 +1,568 @@
-<p>marche works!</p>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title> Chef de projet - Tableau de bord</title>
+
+    <!-- Custom fonts for this template-->
+    <link href="/assets/dashboard/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="/assets/dashboard/css/sb-admin-2.min.css" rel="stylesheet">
+
+</head>
+
+<body id="page-top">
+
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+            <!-- Sidebar - Brand -->
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+                <div class="sidebar-brand-icon rotate-n-15">
+                    <img class="rounded-circle" src="/assets/dashboard/img/cni.png" width="60" height="60" />
+
+                </div>
+                <div class="sidebar-brand-text mx-3"> {{loggedinUser.prenom}} {{loggedinUser.nom}} <sup></sup></div>
+            </a>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider my-0">
+
+            <!-- Nav Item - Dashboard -->
+            <li class="nav-item active">
+                <a class="nav-link" href="index.html">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Tableau de bord</span></a>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
+
+
+            <!-- Nav Item - Charts -->
+
+            <li class="nav-item">
+                <a class="nav-link" href="finance.html">
+                    <i class="fas fa-fw fa-chart-area"></i>
+                    <span>Suivi Financier</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/marche">
+                    <i class="fas fa-fw fa-chart-area"></i>
+                    <span>Suivi de Marché</span></a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="/physique">
+                    <i class="fas fa-fw fa-chart-area"></i>
+                    <span>Suivi Physique</span></a>
+            </li>
+
+            <!-- Nav Item - Tables -->
+            <li class="nav-item">
+                <a class="nav-link" href="/projets">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Projets</span></a>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider d-none d-md-block">
+
+            <!-- Sidebar Toggler (Sidebar) -->
+            <div class="text-center d-none d-md-inline">
+                <button class="rounded-circle border-0" id="sidebarToggle"></button>
+            </div>
+
+
+        </ul>
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content">
+                <div id="content-wrapper" class="d-flex flex-column">
+
+                    <!-- Main Content -->
+                    <div id="content">
+
+                        <!-- Topbar -->
+
+                        <nav id="main_nav" class="navbar navbar-expand-lg navbar-light bg-white shadow">
+                            <div class="container d-flex justify-content-between align-items-center">
+                                <a class="navbar-brand h1" href="index.html">
+                                    <i class='bx bx-buildings bx-sm text-dark'></i>
+                                    <span class="text-dark h4">CNI </span> <span class="text-primary h4">TUNISIE</span>
+                                </a>
+                                <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#navbar-toggler-success" aria-controls="navbarSupportedContent"
+                                    aria-expanded="false" aria-label="Toggle navigation">
+                                    <span class="navbar-toggler-icon"></span>
+                                </button>
+
+                                <div class="align-self-center collapse navbar-collapse flex-fill  d-lg-flex justify-content-lg-between"
+                                    id="navbar-toggler-success">
+                                    <div class="flex-fill mx-xl-3 mb-2">
+                                        <ul
+                                            class="nav navbar-nav d-flex justify-content-between mx-xl-5 text-center text-dark">
+                                            <li class="nav-item">
+                                                <a class="nav-link btn-outline-primary rounded-pill px-3"
+                                                    href="/menu">Accueil</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link btn-outline-primary rounded-pill px-3"
+                                                    href="/projets">Les projets</a>
+                                            </li>
+
+
+
+                                            <li class="nav-item">
+                                                <a class="nav-link btn-outline-primary rounded-pill px-3"
+                                                (click)="deconnexion()">Déconnexion</a>
+                                            </li>
+
+                                        </ul>
+                                    </div>
+
+                                    {{loggedinUser.prenom}} {{loggedinUser.nom}} <i class="fa fa-user" aria-hidden="true"></i>
+
+                                </div>
+                            </div>
+                        </nav>
+
+                        <div class="container-fluid">
+
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary"><strong>P</strong>lan de
+                                        <strong>P</strong>assation <strong>M</strong>arché
+                                    </h6>
+                                </div>
+
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <button type="button" (click)="open(content1)"
+                                            class="btn btn-outline-success my-2 my-sm-0">
+                                            <i class="fa fa-plus" aria-hidden="true"></i></button>
+                                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                            <thead>
+                                                <tr>
+                                                    <th>Année</th>
+                                                    <th>N° Plan</th>
+                                                    <th>Réf Appel à Condidature</th>
+                                                    <th>Désignation</th>
+                                                    <th>Etàt</th>
+                                                    <th>Nature</th>
+                                                    <th>Coût</th>
+                                                    <th>Actions</th>
+
+
+                                                </tr>
+                                            </thead>
+                                            <tfoot>
+
+                                            </tfoot>
+                                            <tbody>
+
+                                                <tr *ngFor="let marche of planPassation">
+
+                                                    <td>{{marche.annee}}</td>
+                                                    <td>{{marche.numPlan}}</td>
+                                                    <td>{{marche.refMarche}}</td>
+                                                    <td>{{marche.designation}}</td>
+                                                    <td>{{marche.etat}}</td>
+                                                    <td>{{marche.nature}}</td>
+                                                    <td>{{marche.cout}}</td>
+                                                    <td> <button type="button"
+                                                            class="btn btn-outline-success my-2 my-sm-0">
+                                                            <i class="fa fa-pencil-square-o"
+                                                                aria-hidden="true"></i></button>
+
+                                                        <button type="button" class="btn btn-outline-danger">
+                                                            <i class="fa fa-trash" aria-hidden="true"></i></button>
+                                                        <button type="button" class="btn btn-outline-info">
+                                                            <i class="fa fa-eye" aria-hidden="true"></i>
+                                                        </button>
+
+                                                    </td>
+                                                </tr>
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col align-self-center">
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary"><strong>P</strong>lan de
+                                        <strong>C</strong>onsignation <strong>M</strong>archés
+                                    </h6>
+                                </div>
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <button type="button" (click)="open(content2)"
+                                            class="btn btn-outline-success my-2 my-sm-0">
+                                            <i class="fa fa-plus" aria-hidden="true"></i></button>
+                                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                            <thead>
+                                                <tr>
+                                                    <th>Ref Appel à Condidature</th>
+                                                    <th>Désignation</th>
+                                                    <th>Coût</th>
+                                                    <th>Matricule Fournisseur</th>
+                                                    <th>Etàt</th>
+                                                    <th>Date signature</th>
+                                                    <th>Date début d'éxécution</th>
+
+                                                    <th>Durée</th>
+                                                    <th>Actions</th>
+                                                </tr>
+                                            </thead>
+                                            <tfoot>
+
+                                            </tfoot>
+                                            <tbody>
+                                                <tr *ngFor="let marche of planConsignation">
+                                                    <td>{{marche.refMarche}}</td>
+                                                    <td>{{marche.designation}}</td>
+                                                    <td>{{marche.cout}}</td>
+                                                    <td>{{marche.matriculFournisseur}}</td>
+                                                    <td>{{marche.etat}}</td>
+                                                    <td>{{marche.dateSignature}}</td>
+                                                    <td>{{marche.dateDebutExecution}}</td>
+                                                    <td>{{marche.duree}}</td>
+                                                    <td> <button type="button"
+                                                            class="btn btn-outline-success my-2 my-sm-0">
+                                                            <i class="fa fa-pencil-square-o"
+                                                                aria-hidden="true"></i></button>
+
+                                                        <button type="button" class="btn btn-outline-danger">
+                                                            <i class="fa fa-trash" aria-hidden="true"></i></button>
+                                                        <button type="button" class="btn btn-outline-info">
+                                                            <i class="fa fa-eye" aria-hidden="true"></i>
+                                                        </button>
+
+                                                    </td>
+                                                </tr>
+
+
+
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col align-self-end">
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary"><strong>P</strong>lan de
+                                        <strong>P</strong>ublication <strong>M</strong>archés
+                                    </h6>
+                                </div>
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <button type="button" (click)="open(content3)"
+                                            class="btn btn-outline-success my-2 my-sm-0">
+                                            <i class="fa fa-plus" aria-hidden="true"></i></button>
+                                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                            <thead>
+                                                <tr>
+                                                    <th>Etat</th>
+                                                    <th>Ref APPEL à condidature</th>
+                                                    <th>Date lancement</th>
+                                                    <th>Date ouverture</th>
+                                                    <th>Date notification</th>
+                                                    <th>Actions</th>
+                                                </tr>
+                                            </thead>
+                                            <tfoot>
+
+                                            </tfoot>
+                                            <tbody>
+
+                                                <tr *ngFor="let marche of planPublication">
+                                                    <td>{{marche.etat}}</td>
+                                                    <td>{{marche.refMarche}}</td>
+                                                    <td>{{marche.dateLancement}}</td>
+                                                    <td>{{marche.dateOuverture}}</td>
+                                                    <td>{{marche.dateNotif}}</td>
+                                                    
+
+                                                    <td> <button type="button"
+                                                            class="btn btn-outline-success my-2 my-sm-0">
+                                                            <i class="fa fa-pencil-square-o"
+                                                                aria-hidden="true"></i></button>
+
+                                                        <button type="button" class="btn btn-outline-danger">
+                                                            <i class="fa fa-trash" aria-hidden="true"></i></button>
+                                                        <button type="button" class="btn btn-outline-info">
+                                                            <i class="fa fa-eye" aria-hidden="true"></i>
+                                                        </button>
+
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+
+                        <ng-template #content1 let-modal>
+                            <div class="modal-header">
+                                <h4 class="modal-title" id="modal-basic-title">
+                                    Ajouter Plan de Passation Marché</h4>
+                                <button type="button" class="close" aria-label="Close"
+                                    (click)="modal.dismiss('Cross click')">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form class="login100-form validate-form">
+
+                                    <div class="wrap-input100 validate-input m-b-26"
+                                        data-validate="Référence est requis">
+                                        <span class="label-input100">Annee</span>
+                                        <select name="annee" id="annee" [(ngModel)]="newMarche.annee">
+                                            <option *ngFor="let year of years" [value]="year">{{year}}</option>
+                                        </select>
+                                        <span class="focus-input100"></span>
+                                    </div>
+                                    <div class="wrap-input100 validate-input m-b-26"
+                                        data-validate="Référence est requis">
+                                        <span class="label-input100">n° plan</span>
+                                        <input class="input100" type="text" name="designation"
+                                            [(ngModel)]="newMarche.numPlan" placeholder="Entrer Designation">
+                                        <span class="focus-input100"></span>
+                                    </div>
+                                    <div class="wrap-input100 validate-input m-b-26" data-validate="prenom est requis">
+                                        <span class="label-input100">Réf appel à condidature</span>
+                                        <input class="input100" type="text" name="prenom"
+                                            [(ngModel)]="newMarche.refMarche" placeholder="Entre refMArche">
+                                        <span class="focus-input100"></span>
+                                    </div>
+                                    <div class="wrap-input100 validate-input m-b-26"
+                                        data-validate="date fin est requis">
+                                        <span class="label-input100">Désignation</span>
+                                        <input class="input100" type="text" name="date_fin"
+                                            [(ngModel)]="newMarche.designation" placeholder="Enter date fin">
+                                        <span class="focus-input100"></span>
+                                    </div>
+                                    <div class="wrap-input100 validate-input m-b-26"
+                                        data-validate="date fin est requis">
+                                        <span class="label-input100">Etat</span>
+                                        <select name="etat" [(ngModel)]="newMarche.etat">
+                                            <option *ngFor="let statut of statutPassation" [value]="statut">{{statut}}
+                                            </option>
+
+                                        </select>
+                                        <span class="focus-input100"></span>
+                                    </div>
+                                    <div class="wrap-input100 validate-input m-b-26" data-validate="budget est requis">
+                                        <span class="label-input100">nature</span>
+                                        <input class="input100" type="text" name="budget" [(ngModel)]="newMarche.nature"
+                                            placeholder="Entrer budget">
+                                        <span class="focus-input100"></span>
+                                    </div>
+                                    <div class="wrap-input100 validate-input m-b-26"
+                                        data-validate="Localisation est requis">
+                                        <span class="label-input100">cout</span>
+                                        <input class="input100" type="text" name="telephone"
+                                            [(ngModel)]="newMarche.cout" placeholder="Entrer Localisation">
+                                        <span class="focus-input100"></span>
+                                    </div>
+
+
+
+
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+
+
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-outline-dark" (click)="addMarche()"
+                                    (click)="modal.close('Save click')">Save</button>
+                            </div>
+                        </ng-template>
+
+                        <ng-template #content2 let-modal>
+                            <div class="modal-header">
+                                <h4 class="modal-title" id="modal-basic-title">
+                                    Ajouter Plan de Consignation Marché</h4>
+                                <button type="button" class="close" aria-label="Close"
+                                    (click)="modal.dismiss('Cross click')">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form class="login100-form validate-form">
+
+
+                                    <div class="wrap-input100 validate-input m-b-26" data-validate="prenom est requis">
+                                        <span class="label-input100">Réf appel à condidature</span>
+                                        <select name="refMarche" 
+                                            (change)="loadMarche($event)">
+                                            <option *ngFor="let marche of planPassation">{{marche.refMarche}}</option>
+                                        </select>
+                                        <span class="focus-input100"></span>
+                                    </div>
+                                    <div class="wrap-input100 validate-input m-b-26"
+                                        data-validate="date fin est requis">
+                                        <span class="label-input100">Désignation</span>
+                                        <input class="input100" type="text" name="date_fin"
+                                            [(ngModel)]="newMarche.designation" placeholder="Enter date fin">
+                                        <span class="focus-input100"></span>
+                                    </div>
+                                    <div class="wrap-input100 validate-input m-b-26"
+                                        data-validate="Localisation est requis">
+                                        <span class="label-input100">cout</span>
+                                        <input class="input100" type="text" name="telephone"
+                                            [(ngModel)]="newMarche.cout" placeholder="Entrer Localisation">
+                                        <span class="focus-input100"></span>
+                                    </div>
+                                    <div class="wrap-input100 validate-input m-b-26"
+                                        data-validate="Localisation est requis">
+                                        <span class="label-input100">Matricule Fournisseur</span>
+                                        <input class="input100" type="text" name="matriculFournisseur"
+                                            [(ngModel)]="newMarche.matriculFournisseur"
+                                            placeholder="Entrer Matricule Fournisseur">
+                                        <span class="focus-input100"></span>
+                                    </div>
+                                    <div class="wrap-input100 validate-input m-b-26"
+                                        data-validate="date fin est requis">
+                                        <span class="label-input100">Etat</span>
+                                        <select name="etat" [(ngModel)]="newMarche.etat">
+                                            <option *ngFor="let statut of statutConsignation" [value]="statut">{{statut}}
+                                            </option>
+
+                                        </select>
+                                        <span class="focus-input100"></span>
+                                    </div>
+
+                                    <div class="wrap-input100 validate-input m-b-26"
+                                        data-validate="dateSignature est requis">
+                                        <span class="label-input100">Date signature</span>
+                                        <input class="input100" type="date" name="dateSignature"
+                                            [(ngModel)]="newMarche.dateSignature" placeholder="Entrer budget">
+                                        <span class="focus-input100"></span>
+                                    </div>
+                                    <div class="wrap-input100 validate-input m-b-26"
+                                        data-validate="dateDebutExecution est requis">
+                                        <span class="label-input100">Date début d'exécution</span>
+                                        <input class="input100" type="date" name="dateDebutExecution"
+                                            [(ngModel)]="newMarche.dateDebutExecution"
+                                            placeholder="Entrer Date début d'exécution">
+                                        <span class="focus-input100"></span>
+                                    </div>
+                                    <div class="wrap-input100 validate-input m-b-26" data-validate="duree est requis">
+                                        <span class="label-input100">Durée</span>
+                                        <input class="input100" type="text" name="duree" [(ngModel)]="newMarche.duree"
+                                            placeholder="Entrer la Durée de projet">
+                                        <span class="focus-input100"></span>
+                                    </div>
+
+
+
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+
+
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-outline-dark" (click)="updateMarche()"
+                                    (click)="modal.close('Save click')">Save</button>
+                            </div>
+                        </ng-template>
+
+                        <ng-template #content3 let-modal>
+                            <div class="modal-header">
+                                <h4 class="modal-title" id="modal-basic-title">
+                                    Modifier Plan de publication Marché</h4>
+                                <button type="button" class="close" aria-label="Close"
+                                    (click)="modal.dismiss('Cross click')">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form class="login100-form validate-form">
+                                    
+
+                                    <div class="wrap-input100 validate-input m-b-26" data-validate="prenom est requis">
+                                        <span class="label-input100">Réf appel à condidature</span>
+                                        <select name="refMarche" [(ngModel)]="newMarche.refMarche"
+                                            (ngModelChange)="loadMarche2($event)">
+                                            <option *ngFor="let marche of planConsignation">{{marche.refMarche}}</option>
+                                        </select>
+                                        <span class="focus-input100"></span>
+                                    </div>
+                                    <div class="wrap-input100 validate-input m-b-26"
+                                    data-validate="date fin est requis">
+                                    <span class="label-input100">Etat</span>
+                                    <select name="etat" [(ngModel)]="newMarche.etat"
+                                    >
+                                        <option *ngFor="let statut of statutConsignation" [value]="statut">{{statut}}
+                                        </option>
+
+                                    </select>
+                                    <span class="focus-input100"></span>
+                                </div>
+                                    <div class="wrap-input100 validate-input m-b-26"
+                                        data-validate="date fin est requis">
+                                        <span class="label-input100">Date lancement</span>
+                                        <input class="input100" type="date" name="date_fin"
+                                            [(ngModel)]="newMarche.dateLancement" placeholder="Enter date fin">
+                                        <span class="focus-input100"></span>
+                                    </div>
+                                    <div class="wrap-input100 validate-input m-b-26"
+                                        data-validate="Localisation est requis">
+                                        <span class="label-input100">date ouverture</span>
+                                        <input class="input100" type="date" name="telephone"
+                                            [(ngModel)]="newMarche.dateOuverture" placeholder="Entrer Localisation">
+                                        <span class="focus-input100"></span>
+                                    </div>
+                                    <div class="wrap-input100 validate-input m-b-26"
+                                        data-validate="Localisation est requis">
+                                        <span class="label-input100">date notification</span>
+                                        <input class="input100" type="date" name="matriculFournisseur"
+                                            [(ngModel)]="newMarche.dateNotif"
+                                            placeholder="Entrer Matricule Fournisseur">
+                                        <span class="focus-input100"></span>
+                                    </div>
+                                   
+
+                                    
+
+
+
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+
+
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-outline-dark" (click)="updateMarche()"
+                                    (click)="modal.close('Save click')">Save</button>
+                            </div>
+                        </ng-template>

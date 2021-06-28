@@ -16,7 +16,7 @@
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
-        <link href="/assets/menu/css/boxicon.min.css" rel="stylesheet">
+    <link href="/assets/menu/css/boxicon.min.css" rel="stylesheet">
     <!-- Custom styles for this template -->
     <link href="/src/app/css/sb-admin-2.min.css" rel="stylesheet">
 
@@ -54,43 +54,51 @@
             <div id="content">
 
                 <!-- Topbar -->
-                
+
                 <nav id="main_nav" class="navbar navbar-expand-lg navbar-light bg-white shadow">
                     <div class="container d-flex justify-content-between align-items-center">
                         <a class="navbar-brand h1" href="index.html">
                             <i class='bx bx-buildings bx-sm text-dark'></i>
-                            <span class="text-dark h4">INJEZ</span> <span class="text-primary h4">TUNISIE</span>
+                            <span class="text-dark h4">CNI </span> <span class="text-primary h4">TUNISIE</span>
                         </a>
-                        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-toggler-success" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#navbar-toggler-success" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon"></span>
                         </button>
-            
-                        <div class="align-self-center collapse navbar-collapse flex-fill  d-lg-flex justify-content-lg-between" id="navbar-toggler-success">
+
+                        <div class="align-self-center collapse navbar-collapse flex-fill  d-lg-flex justify-content-lg-between"
+                            id="navbar-toggler-success">
                             <div class="flex-fill mx-xl-3 mb-2">
                                 <ul class="nav navbar-nav d-flex justify-content-between mx-xl-5 text-center text-dark">
                                     <li class="nav-item">
-                                        <a class="nav-link btn-outline-primary rounded-pill px-3" href="/menu">Accueil</a>
+                                        <a class="nav-link btn-outline-primary rounded-pill px-3"
+                                            href="/menu">Accueil</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link btn-outline-primary rounded-pill px-3" href="/projets">Les projets</a>
+                                        <a class="nav-link btn-outline-primary rounded-pill px-3" href="/projets">Les
+                                            projets</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link btn-outline-primary rounded-pill px-3" href="work.html">Les appels d'offre</a>
+                                        <a class="nav-link btn-outline-primary rounded-pill px-3" href="/admin">Liste
+                                            utilisateurs</a>
                                     </li>
-                                    
-                                    
+
+
+
                                     <li class="nav-item">
-                                        <a class="nav-link btn-outline-primary rounded-pill px-3" href="deconnexion.html">Déconnexion</a>
+                                        <a class="nav-link btn-outline-primary rounded-pill px-3"
+                                            (click)="deconnexion()">Déconnexion</a>
                                     </li>
                                 </ul>
                             </div>
                             <div class="navbar align-self-center d-flex">
-                                <a class="nav-link" href="#"><i class='bx bx-bell bx-sm bx-tada-hover text-primary'></i></a>
-                                <a class="nav-link" href="#"><i class='bx bx-cog bx-sm text-primary'></i></a>
-                                <a class="nav-link" href="#"><i class='bx bx-user-circle bx-sm text-primary'></i></a>
+
+                                {{loggedinUser.prenom}} {{loggedinUser.nom}} <a class="nav-link"><i
+                                        class='bx bx-user-circle bx-sm text-primary'></i></a>
                             </div>
-                            
-                            
+
+
                         </div>
                     </div>
                 </nav>
@@ -109,20 +117,18 @@
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
                             <h6 class="m-0 font-weight-bold text-primary">Liste des projets </h6>
-                            
+
                         </div>
-                        <form
-                            class="col col-lg-2">
+                        <form class="col col-lg-2">
                             <div class="input-group">
-                                <input type="text" class="form-control bg-light border-0 small" 
-                                 placeholder="Rechercher..."
-                                    aria-label="Recherche" aria-describedby="basic-addon2">
-                                    <!--(ngModelChange)="searchEmployees(key.value)" #key="ngModel" ngModel
+                                <input type="text" class="form-control bg-light border-0 small"
+                                    placeholder="Rechercher..." aria-label="Recherche" aria-describedby="basic-addon2">
+                                <!--(ngModelChange)="searchEmployees(key.value)" #key="ngModel" ngModel
                                 name="key" 
                                         [(ngModel)]="nom" [(ngModelChange)]="Search()"-->
                                 <div class="input-group-append">
                                     <button class="btn btn-primary" type="button">
-                                        <i class="fa fa-search" ></i>
+                                        <i class="fa fa-search"></i>
                                     </button>
                                 </div>
                             </div>
@@ -134,86 +140,16 @@
                                         <tr>
                                             <th>Id</th>
                                             <th>Ref</th>
+                                            <th>Désignation</th>
                                             <th>Date_debut</th>
                                             <th>Date_fin</th>
                                             <th>budget</th>
                                             <th>localisation</th>
                                             <th>structure</th>
                                             <th>Actions</th>
-                                            
+
                                             <div class="text-secondary">
                                                 <div class="btn-group">
-                                                    <a type="button" class="nc-plus-universal-menu-container"
-                                                        data-toggle="dropdown" aria-expanded="false"><img
-                                                            src="assets/images/+.png" /></a>
-                                                    <ul class="dropdown-menu">
-                                                        <li><a class="dropdown-item" data-toggle="modal"
-                                                                data-target="#exampleModal" href="#">Ajouter</a></li>
-                                                        <li><a class="dropdown-item" href="#">Modifier</a></li>
-                                                        <li><a class="dropdown-item" href="#">Supprimer</a></li>
-
-                                                    </ul>
-                                                    <div class="modal fade" id="exampleModal" tabindex="-1"
-                                                        role="dialog" aria-labelledby="exampleModalLabel"
-                                                        aria-hidden="true">
-                                                        <div class="modal-dialog" role="document">
-                                                            <div class="modal-content">
-                                                                <div class="modal-header">
-                                                                    <h5 class="modal-title" id="exampleModalLabel">
-                                                                        Nouveau utilisateur</h5>
-                                                                    <button type="button" class="close"
-                                                                        data-dismiss="modal" aria-label="Close">
-                                                                        <span aria-hidden="true">&times;</span>
-                                                                    </button>
-                                                                </div>
-                                                                <div class="modal-body">
-                                                                    <form>
-                                                                        <div class="form-group">
-                                                                            <label for="recipient-name"
-                                                                                class="col-form-label">Structure:</label>
-                                                                            <input type="text" class="form-control"
-                                                                                id="recipient-name">
-                                                                        </div>
-                                                                        <div class="form-group">
-                                                                            <label for="recipient-name"
-                                                                                class="col-form-label">Nom
-                                                                                d'utilisateur:</label>
-                                                                            <input type="text" class="form-control"
-                                                                                id="recipient-name">
-                                                                        </div>
-                                                                        <div class="form-group">
-                                                                            <label for="recipient-name"
-                                                                                class="col-form-label">Mot de
-                                                                                passe:</label>
-                                                                            <input type="Password" class="form-control"
-                                                                                id="recipient-name">
-                                                                        </div>
-                                                                        <div class="form-group">
-                                                                            <label for="recipient-name"
-                                                                                class="col-form-label">Role:</label>
-                                                                            <input type="text" class="form-control"
-                                                                                id="recipient-name">
-                                                                        </div>
-                                                                        <div class="form-group">
-                                                                            <label for="recipient-name"
-                                                                                class="col-form-label">Administrateur:</label>
-                                                                            <input type="Date" class="form-control"
-                                                                                id="recipient-name">
-                                                                        </div>
-
-
-
-                                                                    </form>
-                                                                </div>
-                                                                <div class="modal-footer">
-                                                                    <button type="button" class="btn btn-secondary"
-                                                                        data-dismiss="modal">Fermer</button>
-                                                                    <button type="button"
-                                                                        class="btn btn-primary">Sauvegarder</button>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
                                                 </div>
                                             </div>
 
@@ -223,101 +159,314 @@
                                     <tbody *ngFor="let projet of projets">
                                         <tr>
                                             <td>
-                                               {{projet.id}}
+                                                {{projet.id}}
                                             </td>
                                             <td><a href="/physique">{{projet.ref}}</a></td>
-                                            <td>{{myDate | date}}</td>
+                                            <td>{{projet.designation}}</td>
+                                            <td>{{projet.date_debut}}</td>
                                             <td>{{projet.date_fin}}
                                             </td>
                                             <td>{{projet.budget}}</td>
                                             <td>{{projet.localisation}}</td>
-                                            <td>{{projet.structure}}</td>
-                                <td><a href="/login" type="button" class="btn btn-outline-info">Edit</a>
+                                            <td>{{projet.structure?.name_structure}}</td>
+                                            <!--<td><a type="button"  (click)="projetDetail(projet.id||0)" class="btn btn-outline-info">Edit</a>
                                     <button type="button" class="btn btn-outline-success">voir détail</button>
                                     <button type="button" class="btn btn-outline-danger">Supprimer</button>
                                     <a  href="/addprojet" type="button" class="btn btn-outline-secondary">Ajouter</a>
-                                </td>
+                                </td>-->
+                                            <td> <button type="button" (click)="handleUpdate(projet)"
+                                                    class="btn btn-outline-success my-2 my-sm-0">
+                                                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+
+                                                <a type="button" href="/addprojet" class="btn btn-outline-warning">
+                                                    <i class="fa fa-plus" aria-hidden="true"></i></a>
+                                                <button type="button" (click)="supprimerProjet(projet.id||0)"
+                                                    class="btn btn-outline-danger">
+                                                    <i class="fa fa-trash" aria-hidden="true"></i></button>
+                                                <button type="button" (click)="open(contentView)"
+                                                    class="btn btn-outline-info">
+                                                    <i class="fa fa-eye" aria-hidden="true"></i>
+                                                </button>
+
+
+                                            </td>
                                         </tr>
-                                       
-                                </tbody>
+
+                                    </tbody>
                                 </table>
 
                                 <div class="col-sm-12 col-md-8 col-lg-12"><br />
-                                   
-
-                                                
 
 
 
 
 
-                                            <!-- /.container-fluid -->
 
 
-                                            <!-- End of Main Content -->
 
-                                            <!-- Footer -->
-                                            <footer class="sticky-footer bg-white">
-                                                <div class="container my-auto">
-                                                    <div class="copyright text-center my-auto">
-                                                        <span>Copyright Nedra &copy; 2021</span>
-                                                    </div>
+                                    <!-- /.container-fluid -->
+
+
+                                    <!-- End of Main Content -->
+
+                                    <!-- Footer -->
+                                    <footer class="sticky-footer bg-white">
+                                        <div class="container my-auto">
+                                            <div class="copyright text-center my-auto">
+                                                <span>Copyright Nedra &copy; 2021</span>
+                                            </div>
+                                        </div>
+                                    </footer>
+                                    <!-- End of Footer -->
+
+
+                                    <!-- End of Content Wrapper -->
+
+
+                                    <!-- End of Page Wrapper -->
+
+                                    <!-- Scroll to Top Button-->
+                                    <a class="scroll-to-top rounded" href="#page-top">
+                                        <i class="fas fa-angle-up"></i>
+                                    </a>
+
+                                    <!-- Logout Modal-->
+                                    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog"
+                                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-xl" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">Ready to
+                                                        Leave?</h5>
+                                                    <button class="close" type="button" data-dismiss="modal"
+                                                        aria-label="Close">
+                                                        <span aria-hidden="true">×</span>
+                                                    </button>
                                                 </div>
-                                            </footer>
-                                            <!-- End of Footer -->
-
-
-                                            <!-- End of Content Wrapper -->
-
-
-                                            <!-- End of Page Wrapper -->
-
-                                            <!-- Scroll to Top Button-->
-                                            <a class="scroll-to-top rounded" href="#page-top">
-                                                <i class="fas fa-angle-up"></i>
-                                            </a>
-
-                                            <!-- Logout Modal-->
-                                            <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog"
-                                                aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                <div class="modal-dialog" role="document">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title" id="exampleModalLabel">Ready to
-                                                                Leave?</h5>
-                                                            <button class="close" type="button" data-dismiss="modal"
-                                                                aria-label="Close">
-                                                                <span aria-hidden="true">×</span>
-                                                            </button>
-                                                        </div>
-                                                        <div class="modal-body">Select "Logout" below if you are ready
-                                                            to end your current session.</div>
-                                                        <div class="modal-footer">
-                                                            <button class="btn btn-secondary" type="button"
-                                                                data-dismiss="modal">Annuler</button>
-                                                            <a class="btn btn-primary" href="login.html">Déconnexion</a>
-                                                        </div>
-
-                                                    </div>
+                                                <div class="modal-body">Select "Logout" below if you are ready
+                                                    to end your current session.</div>
+                                                <div class="modal-footer">
+                                                    <button class="btn btn-secondary" type="button"
+                                                        data-dismiss="modal">Annuler</button>
+                                                    <a class="btn btn-primary" href="login.html">Déconnexion</a>
                                                 </div>
 
                                             </div>
+                                        </div>
 
-                                            <!-- Bootstrap core JavaScript-->
-                                            <script src="vendor/jquery/jquery.min.js"></script>
-                                            <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-                                            <!-- Core plugin JavaScript-->
-                                            <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-
-                                            <!-- Custom scripts for all pages-->
-                                            <script src="js/sb-admin-2.min.js"></script>
-
-                                            <!-- Page level plugins -->
-                                            <script src="vendor/datatables/jquery.dataTables.min.js"></script>
-                                            <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
-
-                                            <!-- Page level custom scripts -->
-                                            <script src="js/demo/datatables-demo.js"></script>
+                                    </div>
 
 
+                                    <div class="modal fade" id="updateModal" tabindex="-1" role="dialog"
+                                        aria-hidden="true">
+                                        <div class="modal-dialog modal-xl" role="document">
+                                            <ng-template #contentUpdate let-modal>
+                                                <div class="modal-header">
+                                                    <h4 class="modal-title" id="modal-basic-title">Modification</h4>
+                                                    <button type="button" class="close" aria-label="Close"
+                                                        (click)="modal.dismiss('Cross click')">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <form class="login100-form validate-form">
+
+                                                        <div class="wrap-input100 validate-input m-b-26"
+                                                            data-validate="Référence est requis">
+                                                            <span class="label-input100">Référence</span>
+                                                            <input class="input100" type="text" name="ref"
+                                                                [(ngModel)]="newProjet.ref"
+                                                                placeholder="Entrer référence">
+                                                            <span class="focus-input100"></span>
+                                                        </div>
+                                                        <div class="wrap-input100 validate-input m-b-26"
+                                                            data-validate="Référence est requis">
+                                                            <span class="label-input100">Désignation</span>
+                                                            <input class="input100" type="text" name="designation"
+                                                                [(ngModel)]="newProjet.designation"
+                                                                placeholder="Entrer Designation">
+                                                            <span class="focus-input100"></span>
+                                                        </div>
+                                                        <div class="wrap-input100 validate-input m-b-26"
+                                                            data-validate="prenom est requis">
+                                                            <span class="label-input100">Date début</span>
+                                                            <input class="input100" type="date" name="prenom"
+                                                                [(ngModel)]="newProjet.date_debut"
+                                                                placeholder="Entrer Date début de projet">
+                                                            <span class="focus-input100"></span>
+                                                        </div>
+                                                        <div class="wrap-input100 validate-input m-b-26"
+                                                            data-validate="date fin est requis">
+                                                            <span class="label-input100">Date fin</span>
+                                                            <input class="input100" type="date" name="date_fin"
+                                                                [(ngModel)]="newProjet.date_fin"
+                                                                placeholder="Enter date fin">
+                                                            <span class="focus-input100"></span>
+                                                        </div>
+                                                        <div class="wrap-input100 validate-input m-b-26"
+                                                            data-validate="budget est requis">
+                                                            <span class="label-input100">Budget</span>
+                                                            <input class="input100" type="number" name="budget"
+                                                                [(ngModel)]="newProjet.budget"
+                                                                placeholder="Entrer budget">
+                                                            <span class="focus-input100"></span>
+                                                        </div>
+                                                        <div class="wrap-input100 validate-input m-b-26"
+                                                            data-validate="Localisation est requis">
+                                                            <span class="label-input100">Localisation</span>
+                                                            <input class="input100" type="text" name="telephone"
+                                                                [(ngModel)]="newProjet.localisation"
+                                                                placeholder="Entrer Localisation">
+                                                            <span class="focus-input100"></span>
+                                                        </div>
+
+
+
+                                                        <div class="wrap-input100 validate-input m-b-26"
+                                                            data-validate="budget est requis">
+                                                            <span class="label-input100">Structure</span>
+
+
+                                                            <div class="wrap-input100 validate-input m-b-26">
+
+                                                                <span class="label-input100">Structure</span>
+
+                                                                <div class="wrap-input100 validate-input m-b-18"
+                                                                    class="dropdown">
+                                                                    <!--<input type="string" class="form-control form-control-user" [(ngModel)]="roles.role" name="confirm_mdp"
+                                                                       id="exampleRepeatPassword" placeholder="role">-->
+                                                                    <select class="btn btn-secondary dropdown-toggle"
+                                                                        [(ngModel)]="newProjet.structure"
+                                                                        name="structure" id="structure">
+                                                                        <option *ngFor="let structure of structures"
+                                                                            [ngValue]="structure">
+                                                                            {{structure.name_structure}}</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+
+
+                                                    </form>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-outline-dark"
+                                                        (click)="updateProjet()"
+                                                        (click)="modal.close('Save click')">Save</button>
+                                                </div>
+                                            </ng-template>
+                                        </div>
+
+                                    </div>
+
+
+
+
+                                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-xl" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">
+                                                        Nouveau utilisateur</h5>
+                                                    <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <form>
+
+                                                        <div class="form-group">
+                                                            <label for="recipient-name" class="col-form-label">Nom
+                                                                d'utilisateur:</label>
+                                                            <input type="text" class="form-control" id="recipient-name">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="recipient-name" class="col-form-label">Mot de
+                                                                passe:</label>
+                                                            <input type="Password" class="form-control"
+                                                                id="recipient-name">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="recipient-name"
+                                                                class="col-form-label">Role:</label>
+                                                            <input type="text" class="form-control" id="recipient-name">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="recipient-name"
+                                                                class="col-form-label">Administrateur:</label>
+                                                            <input type="Date" class="form-control" id="recipient-name">
+                                                        </div>
+
+
+
+                                                    </form>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary"
+                                                        data-dismiss="modal">Fermer</button>
+                                                    <button type="button" class="btn btn-primary">Sauvegarder</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+                                    
+
+                                    <div class="modal fade" id="viewModal" tabindex="-1" role="dialog"
+                                    aria-hidden="true">
+                                    <div class="modal-dialog modal-xl" role="document">
+                                        <ng-template #contentView let-modal>
+                                            <div class="modal-header">
+                                                <h4 class="modal-title" id="modal-basic-title">Vue détail de
+                                                    projet</h4>
+                                                <button type="button" class="close" aria-label="Close"
+                                                    (click)="modal.dismiss('Cross click')">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+    
+                                                <td>
+                                                    {{newProjet.id}}
+                                                </td>
+                                                <td><a href="/physique">{{newProjet.ref}}</a></td>
+                                                <td>{{newProjet.designation}}</td>
+                                                <td>{{newProjet.date_debut}}</td>
+                                                <td>{{newProjet.date_fin}}
+                                                </td>
+                                                <td>{{newProjet.budget}}</td>
+                                                <td>{{newProjet.localisation}}</td>
+                                                <td>{{newProjet.structure?.name_structure}}</td>
+    
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-outline-dark"
+                                                    (click)="modal.close('Save click')">Save</button>
+                                            </div>
+                                        </ng-template>
+                                    
+                                    </div>
+                                    </div>
+
+                                    <!-- Bootstrap core JavaScript-->
+                                    <script src="vendor/jquery/jquery.min.js"></script>
+                                    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+                                    <!-- Core plugin JavaScript-->
+                                    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+                                    <!-- Custom scripts for all pages-->
+                                    <script src="js/sb-admin-2.min.js"></script>
+
+                                    <!-- Page level plugins -->
+                                    <script src="vendor/datatables/jquery.dataTables.min.js"></script>
+                                    <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+                                    <!-- Page level custom scripts -->
+                                    <script src="js/demo/datatables-demo.js"></script>

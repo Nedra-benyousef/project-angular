@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Login V15</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!--===============================================================================================-->
+	<link rel="icon" type="image/png" href="/assets/images" />
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/assets/login/vendor/bootstrap/css/bootstrap.min.css">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/assets/login/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/assets/login/fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/assets/login/vendor/animate/animate.css">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/assets/login/vendor/css-hamburgers/hamburgers.min.css">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/assets/login/vendor/animsition/css/animsition.min.css">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/assets/login/vendor/select2/select2.min.css">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/assets/login/vendor/daterangepicker/daterangepicker.css">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/assets/login/css/util.css">
+	<link rel="stylesheet" type="text/css" href="/assets/login/css/main.css">
+	<!--===============================================================================================-->
+</head>
+
+<body>
+
+	<div class="limiter">
+		<div class="container-login100">
+			<div class="wrap-login100">
+				<div class="login100-form-title" style="background-image: url(/assets/images/bg-01.jpg);">
+					<span class="login100-form-title-1">
+						Modifiez vos données
+					</span>
+				</div>
+
+				<form class="login100-form validate-form">
+					<div class="wrap-input100 validate-input m-b-26" data-validate="matricule is required">
+						<span class="label-input100">Matricule</span>
+						<input class="input100" type="text" name="matricule" [(ngModel)]="newUser.matricule">
+						<span class="focus-input100"></span>
+					</div>
+					<div class="wrap-input100 validate-input m-b-26" data-validate="nom is required">
+						<span class="label-input100">Nom</span>
+						<input class="input100" type="text" name="nom" [(ngModel)]="newUser.nom">
+						<span class="focus-input100"></span>
+					</div>
+					<div class="wrap-input100 validate-input m-b-26" data-validate="prenom is required">
+						<span class="label-input100">Prenom</span>
+						<input class="input100" type="text" name="prenom" [(ngModel)]="newUser.prenom">
+						<span class="focus-input100"></span>
+					</div>
+					<div class="wrap-input100 validate-input m-b-26" data-validate="datenaissance is required">
+						<span class="label-input100">Date de naissance</span>
+						<input class="input100" type="date" name="datenaissance" [(ngModel)]="newUser.datenaissance">
+						<span class="focus-input100"></span>
+					</div>
+					<div class="wrap-input100 validate-input m-b-26" data-validate="email is required">
+						<span class="label-input100">Adresse mail</span>
+						<input class="input100" type="email" name="email" [(ngModel)]="newUser.email">
+						<span class="focus-input100"></span>
+					</div>
+					<div class="wrap-input100 validate-input m-b-26" data-validate="telephone is required">
+						<span class="label-input100">Téléphone</span>
+						<input class="input100" type="text" name="telephone" [(ngModel)]="newUser.telephone">
+						<span class="focus-input100"></span>
+					</div>
+					<div class="wrap-input100 validate-input m-b-26">
+
+						<span class="label-input100">Structure</span>
+
+						<div class="wrap-input100 validate-input m-b-18" class="dropdown">
+							<!--<input type="string" class="form-control form-control-user" [(ngModel)]="roles.role" name="confirm_mdp"
+                                       id="exampleRepeatPassword" placeholder="role">-->
+							<select class="btn btn-secondary dropdown-toggle" [(ngModel)]="newUser.structure" name="structure" id="structure">
+								<option *ngFor="let structure of structures" [ngValue]="structure">
+									{{structure.name_structure}}</option>
+							</select>
+						</div>
+					</div>
+					<div class="wrap-input100 validate-input m-b-26" data-validate="mdp is required">
+						<span class="label-input100">Mot de passe</span>
+						<input class="input100" type="password" name="mdp" [(ngModel)]="newUser.mdp">
+						<span class="focus-input100"></span>
+					</div>
+					<div class="wrap-input100 validate-input m-b-26" data-validate="mdp is required">
+						<span class="label-input100">confirme mot de passe</span>
+						<input class="input100" type="password" name="mdp" [(ngModel)]="newUser.confirm_mdp">
+						<span class="focus-input100"></span>
+					</div>
+					<div class="col">
+						
+						<ul>
+							<li *ngFor="let profile of profiles">
+								{{profile.role!.name!}} || {{profile.projet!.ref!}}
+								<button>
+									<i class="fa fa-trash" aria-hidden="true" (click)="deleteProfile(profile)"></i>
+								</button>
+									
+								
+							</li>
+						</ul>
+					
+					<td>
+						<span class="label-input100">Affecter un profile</span>
+						<div class="wrap-input100 validate-input m-b-18" class="dropdown">
+
+							<select [(ngModel)]="role" class="btn btn-secondary dropdown-toggle" name="role"
+								>
+								<option *ngFor="let role of roles" [ngValue]="role">{{role.name}}</option>
+
+
+							</select>
+						</div>
+					</td>
+					</div>
+					<br/>
+					<div class="col">
+					<td>
+						<span class="label-input100">Affecter un projet</span>
+						<div class="wrap-input100 validate-input m-b-18" class="dropdown">
+
+							<select [(ngModel)]="projet" class="btn btn-secondary dropdown-toggle" name="projet"
+								>
+								<option *ngFor="let projet of projets" [ngValue]="projet">{{projet.ref}}</option>
+
+
+							</select>
+						</div>
+					</td>
+				</div>
+					<div class="flex-sb-m w-full p-b-30">
+
+
+						
+					</div>
+
+					<div class="container-login100-form-btn">
+						<button class="login100-form-btn" href="/admin" (click)="updateUser()">
+							Sauvegarder
+						</button>
+
+						<a class="login100-form-btn " style="background-color:red;" href="/admin">
+							Annuler
+						</a>
+					</div>
+					<!-- (ngSubmit)="updateUser(id_user ||0,newUser)"-->
+
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<!--===============================================================================================-->
+	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+	<!--===============================================================================================-->
+	<script src="vendor/animsition/js/animsition.min.js"></script>
+	<!--===============================================================================================-->
+	<script src="vendor/bootstrap/js/popper.js"></script>
+	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+	<!--===============================================================================================-->
+	<script src="vendor/select2/select2.min.js"></script>
+	<!--===============================================================================================-->
+	<script src="vendor/daterangepicker/moment.min.js"></script>
+	<script src="vendor/daterangepicker/daterangepicker.js"></script>
+	<!--===============================================================================================-->
+	<script src="vendor/countdowntime/countdowntime.js"></script>
+	<!--===============================================================================================-->
+	<script src="js/main.js"></script>
+
+</body>
+
+</html>
+<!--
+<div class="container" style="text-align: center;">
+<div class="card o-hidden border-0 shadow-lg my-5">
+<div class="card-body p-0">
+<form  (ngSubmit)="updateUser(id_user ||0,newUser)">
+     <div class="col-5">
+         <input type="text" class="form-control form-control-user" [(ngModel)]="newUser.matricule" name="matricule"id="matricule"
+                                           ><br/>
+     </div>
+     <div class="col-sm-6 mb-3 mb-sm-0">
+        <input type="text" class="form-control form-control-user" [(ngModel)]="newUser.nom" name="nom"id="nom"
+                                           ><br/>
+    </div>
+    <div class="col-sm-6 mb-3 mb-sm-0">
+        <input type="text" class="form-control form-control-user" [(ngModel)]="newUser.prenom" name="prenom"id="prenom"
+                                           ><br/>
+    </div>
+    <div class="col-sm-6 mb-3 mb-sm-0">
+        <input type="date" class="form-control form-control-user" [(ngModel)]="newUser.datenaissance" name="date_naissance"id="date_naissance"
+                                           ><br/>
+    </div>
+    <div class="col-sm-6 mb-3 mb-sm-0">
+        <input type="text" class="form-control form-control-user" [(ngModel)]="newUser.email" name="email"id="email"
+                                           ><br/>
+    </div>
+    <div class="col-sm-6 mb-3 mb-sm-0">
+        <input type="text" class="form-control form-control-user" [(ngModel)]="newUser.telephone" name="telephone"id="telephone"
+                                           ><br/>
+    </div>
+    <div class="col-sm-6 mb-3 mb-sm-0">
+        <input type="text" class="form-control form-control-user" [(ngModel)]="newUser.nom_structure" name="nom_structure"id="nom_structure"
+                                          ><br/>
+    </div>
+
+<div class="col-sm-6 mb-3 mb-sm-0">
+    <input type="text" class="form-control form-control-user" [(ngModel)]="newUser.roles" name="role"id="role"
+                                      ><br/>
+</div>
+    
+    <button 
+    type="submit"  class="btn btn-primary ">
+        Sauvegarder
+    </button>
+    </form>
+</div>
+</div>
+</div>
+
+-->

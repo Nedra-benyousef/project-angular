@@ -1,4 +1,170 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Login V15</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->	
+	<link rel="icon" type="image/png" href="/assets/images"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/assets/login/vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/assets/login/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/assets/login/fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/assets/login/vendor/animate/animate.css">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="/assets/login/vendor/css-hamburgers/hamburgers.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/assets/login/vendor/animsition/css/animsition.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/assets/login/vendor/select2/select2.min.css">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="/assets/login/vendor/daterangepicker/daterangepicker.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/assets/login/css/util.css">
+	<link rel="stylesheet" type="text/css" href="/assets/login/css/main.css">
+<!--===============================================================================================-->
+</head>
+<body>
+	
+	<div class="limiter" >
+		<div class="container-login100">
+			<div class="wrap-login100">
+				<div class="login100-form-title" style="background-image: url(/assets/images/bg-01.jpg);">
+					<span class="login100-form-title-1">
+						Nouveau projet 
+					</span>
+				</div>
+				
+				<form class="login100-form validate-form"  >
+					
+                    <div class="wrap-input100 validate-input m-b-26" data-validate="Référence est requis">
+						<span class="label-input100">Référence</span>
+						<input class="input100" type="text" name="ref" [(ngModel)]="newProjet.ref" placeholder="Entrer référence"
+						
+						required maxlength="3" required minlength="3"
+						#refVar="ngModel" [ngClass]="{'is-invalid': refVar.touched && !refVar.valid}">
+						<div class="invalid-feedback">
+							<span *ngIf="refVar.errors?.required">Entrez référence projet</span>
+							<span *ngIf="refVar.errors?.minlength">Entrez 3 caractéres</span>
+						</div><span class="focus-input100"></span>
+						
+					</div>
+                    <div class="wrap-input100 validate-input m-b-26" data-validate="designation est requis">
+						<span class="label-input100">Désignation</span>
+						<input class="input100" type="text" name="designation" [(ngModel)]="newProjet.designation" required placeholder="Entrer Designation"
+						#designVar="ngModel" [ngClass]="{'is-invalid': designVar.touched && !designVar.valid}">
+						<div class="invalid-feedback">
+							<span *ngIf="designVar.errors?.required">Entrez désignation projet</span>
+							</div>
+						<span class="focus-input100"></span>
+					</div>
+                    <div class="wrap-input100 validate-input m-b-26" data-validate="date_debut est requis">
+						<span class="label-input100">Date début</span>
+						<input class="input100" type="date" name="prenom" [(ngModel)]="newProjet.date_debut" placeholder="Entrer Date début de projet">
+						<span class="focus-input100"></span>
+					</div>
+                    <div class="wrap-input100 validate-input m-b-26" data-validate="date fin est requis">
+						<span class="label-input100">Date fin</span>
+						<input class="input100" type="date" name="date_fin" [(ngModel)]="newProjet.date_fin" placeholder="Enter date fin">
+						<span class="focus-input100"></span>
+					</div>
+                    <div class="wrap-input100 validate-input m-b-26" data-validate="budget est requis">
+						<span class="label-input100">Budget</span>
+						<input class="input100" type="number" name="budget" [(ngModel)]="newProjet.budget" placeholder="Entrer budget"
+						required maxlength="20" required minlength="6"
+						#budgetVar="ngModel" [ngClass]="{'is-invalid': budgetVar.touched && !budgetVar.valid}">
+						<div class="invalid-feedback">
+							<span *ngIf="budgetVar.errors?.required">Entrez budget projet</span>
+							<span *ngIf="budgetVar.errors?.minlength"></span>
+						</div>
+						<span class="focus-input100"></span>
+					</div>
+                    <div class="wrap-input100 validate-input m-b-26" data-validate="Localisation est requis">
+						<span class="label-input100">Localisation</span>
+						<input class="input100" type="text" name="telephone" [(ngModel)]="newProjet.localisation" placeholder="Entrer Localisation"
+						
+						required maxlength="100" required minlength="20"
+						#localisationVar="ngModel" [ngClass]="{'is-invalid': localisationVar.touched && !localisationVar.valid}">
+						<div class="invalid-feedback">
+							<span *ngIf="localisationVar.errors?.required">Entrez localisation de projet</span>
+							<span *ngIf="localisationVar.errors?.minlength"></span>
+						</div><span class="focus-input100"></span>
+					</div>
+					<div class="validate-input m-b-26" data-validate="Structure is required">
+						<span class="label-input100">Structure</span>
+						<div class="wrap-input100 validate-input m-b-26" class="dropdown">
+
+							<select [(ngModel)]="newProjet.structure"  class="btn btn-secondary dropdown-toggle"
+								name="Structure" id="pet-select">
+								<option *ngFor="let Structure of Structure" [ngValue]="Structure">
+									{{Structure.name_structure}}</option>
+
+
+							</select>
+						</div>
+					</div>
+                    
+					
+
+				<!--	<div class="wrap-input100 validate-input m-b-26" data-validate="budget est requis">
+						<span class="label-input100">Structure</span>
+				
+					
+                    <div class="wrap-input100 validate-input m-b-18" class="dropdown">-->
+                        <!--<input type="string" class="form-control form-control-user" [(ngModel)]="roles.role" name="confirm_mdp"
+                                       id="exampleRepeatPassword" placeholder="role">-->
+                                   <!--   <select  class="btn btn-secondary dropdown-toggle"name="pets" id="pet-select">
+                                           <option value="" >ISET Mahdia</option>
+                                           <option value="dog">Administrateur</option>
+                                           <option value="cat">Financier</option>
+                                           <option value="hamster">Responsable technique</option>
+                                           <option value="parrot">Responsable marché</option>
+                                           <option value="spider">Chef de projet</option>
+                                          
+                                       </select>
+                                       
+                               </div>
+                               </div>-->
+                               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   
+
+					<div class="container-login100-form-btn">
+						<button class="login100-form-btn" href="/admin" (click)="addProjet()">
+							Créer projet
+						</button>
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+						<a class="login100-form-btn " style="background-color:red;" href="/projets" >
+							Annuler</a>
+					</div>
+                    
+				</form>
+			</div>
+		</div>
+	</div>
+	
+<!--===============================================================================================-->
+	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/animsition/js/animsition.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/bootstrap/js/popper.js"></script>
+	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/daterangepicker/moment.min.js"></script>
+	<script src="vendor/daterangepicker/daterangepicker.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/countdowntime/countdowntime.js"></script>
+<!--===============================================================================================-->
+	<script src="js/main.js"></script>
+
+</body>
+</html>
+<!--<nav class="navbar navbar-expand-lg navbar-light bg-light">
     
     <div class="collapse navbar-collapse" id="navbarColor02">
        <ul class="navbar-nav mr-auto">
@@ -31,12 +197,8 @@
           <input type="text" class="form-control form-control-user"[(ngModel)]="newProjet.ref" name="référence" id="exampleLastName"
               placeholder="Référence "><br/>
       </div>
-      <!--<div class="col-sm-6">
-          <input type="date" class="form-control form-control-user"[(ngModel)]="newProjet.date_debut" name="date début" id="exampleLastName"
-              placeholder="Date de début "><br/>
-              {{}}
-      </div>-->
-      <!--[(ngModel)]={{newProjet.myDate | date}}-->
+     
+     
   <div class="col-sm-6">
       <input type="date" class="form-control form-control-user"  [(ngModel)]="newProjet.date_fin" name="date fin"id="exampleInputEmail"
           placeholder="Date fin"><br/>
@@ -61,3 +223,4 @@
         nouveau projet
     </a>
       </div>
+    -->

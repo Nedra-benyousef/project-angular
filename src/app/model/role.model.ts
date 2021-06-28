@@ -1,11 +1,11 @@
-export class role{
+export class Role{
     name?:string;
-    role?:string;
-   /* constructor(role?:String)
+   // name?:string;
+/*   constructor(name?:String)
     {
-        this.role= role?.valueOf();
-    }*/
-
+        this.name= name?.valueOf();
+    }
+*/
     
 
 }

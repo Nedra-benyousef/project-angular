@@ -1,35 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<title>Login V15</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-<!--===============================================================================================-->	
-	<link rel="icon" type="image/png" href="/assets/images"/>
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
+	<link rel="icon" type="image/png" href="/assets/images" />
+	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="/assets/login/vendor/bootstrap/css/bootstrap.min.css">
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="/assets/login/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="/assets/login/fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="/assets/login/vendor/animate/animate.css">
-<!--===============================================================================================-->	
+	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="/assets/login/vendor/css-hamburgers/hamburgers.min.css">
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="/assets/login/vendor/animsition/css/animsition.min.css">
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="/assets/login/vendor/select2/select2.min.css">
-<!--===============================================================================================-->	
+	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="/assets/login/vendor/daterangepicker/daterangepicker.css">
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="/assets/login/css/util.css">
 	<link rel="stylesheet" type="text/css" href="/assets/login/css/main.css">
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 </head>
+
 <body>
-	
-	<div class="limiter" >
+
+	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100">
 				<div class="login100-form-title" style="background-image: url(/assets/images/bg-01.jpg);">
@@ -37,22 +39,37 @@
 						Connectez-vous à votre compte
 					</span>
 				</div>
-				
-				<form class="login100-form validate-form" *ngIf="erreur==0" >
+
+				<form class="login100-form validate-form" *ngIf="erreur==0">
 					<div class="wrap-input100 validate-input m-b-26" data-validate="matricule is required">
 						<span class="label-input100">Matricule</span>
-						<input class="input100" type="text" name="username" [(ngModel)]="user.matricule" placeholder="Entrer matricule">
+						<input class="input100" type="text" name="username" [(ngModel)]="loginRequest.matricule"
+							placeholder="Entrer matricule" #matVar="ngModel" class=" form-control" required
+							maxlength="3" required minlength="3"
+							[ngClass]="{'is-invalid':matVar.touched && !matVar.valid}">
+
+						<div class="invalid-feedback">
+							<span *ngIf="matVar.errors?.required">Entrez matricule</span>
+							<span *ngIf="matVar.errors?.minlength">Matricule n'est valide </span>
+						</div>
 						<span class="focus-input100"></span>
 					</div>
 
-					<div class="wrap-input100 validate-input m-b-18" data-validate = "mot de passe is required">
+					<div class="wrap-input100 validate-input m-b-18" data-validate="mot de passe is required">
 						<span class="label-input100">Mot de passe</span>
-						<input class="input100" type="password" name="pass"  [(ngModel)]="user.mdp" placeholder="Entrer mot de passe">
+						<input class="input100" type="password" name="pass" [(ngModel)]="loginRequest.mdp"
+							placeholder="Entrer mot de passe" #mdpVar="ngModel" class=" form-control"
+							[ngClass]="{'is-invalid':mdpVar.touched && !mdpVar.valid}">
+
+						<div class="invalid-feedback">
+							<span *ngIf="mdpVar.errors?.required">Entrez mot de passe</span>
+
+						</div>
 						<span class="focus-input100"></span>
 					</div>
 
 					<div class="flex-sb-m w-full p-b-30">
-						
+
 
 						<div>
 							<a href="#" class="txt1">
@@ -62,34 +79,33 @@
 					</div>
 
 					<div class="container-login100-form-btn">
-						<button class="login100-form-btn">
+						<button class="login100-form-btn"(click)="onLoggedin()">
 							Connexion
 						</button>
 					</div>
-                    <div class="text-center">
-                        <a class="small" href="/register">Vous n'avez pas un compte ? Connexion!</a>
-                    </div>
+					
 				</form>
 			</div>
 		</div>
 	</div>
-	
-<!--===============================================================================================-->
+
+	<!--===============================================================================================-->
 	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<script src="vendor/animsition/js/animsition.min.js"></script>
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<script src="vendor/bootstrap/js/popper.js"></script>
 	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<script src="vendor/select2/select2.min.js"></script>
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<script src="vendor/daterangepicker/moment.min.js"></script>
 	<script src="vendor/daterangepicker/daterangepicker.js"></script>
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<script src="vendor/countdowntime/countdowntime.js"></script>
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<script src="js/main.js"></script>
 
 </body>
+
 </html>
